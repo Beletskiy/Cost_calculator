@@ -35,10 +35,14 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
-    app.showExpenses = function () {
+    app.showExpenses = function (month, year) {
         var options = {
             container_id: '#screen',
-            content: 'expenses.screen'
+            content: 'expenses.screen',
+            extras: {
+                month: month,
+                year: year
+            }
         };
         core.publish('navigation.show', options);
     };
@@ -47,16 +51,9 @@ RAD.application(function (core) {
         window.history.back();
     };
 
-    app.getCurrentDate = function () {
-        var date = new Date(),
-            options = {
-                year: 'numeric',
-                month: 'long'
-            },
-            locale = 'en-us',
-            currentDate;
-        currentDate = date.toLocaleString(locale, options);
-        return currentDate;
+    app.displayedDate = {
+        //month: null,
+        //year: null
     };
 
     return app;

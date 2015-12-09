@@ -14,4 +14,20 @@
 
                {{# }); }} -->
 
-{{ this.headerInfo.month }}
+<ul>
+    {{# _.each(model, function(item, index) { }}
+    <li>
+        {{# for (var i = 0; i < item.models.length; i++) { }}
+
+        <table>
+            <tr>
+                <td> {{ model[0].models[i].attributes.date.substr(5,5) }}</td>
+                <td> {{ model[0].models[i].attributes.category }}</td>
+                <td> {{ model[0].models[i].attributes.sum }}</td>
+            </tr>
+        </table>
+
+        {{# } }}
+    </li>
+    {{# }); }}
+</ul>
