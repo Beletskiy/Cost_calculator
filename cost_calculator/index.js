@@ -1,7 +1,7 @@
 (function (document, window) {
     // don't remove ## marks, CLI uses them for updating this file
     // #script_begin#
-    
+    'use strict';
     var scripts = [
 
         'source/models/categories.collection/categories.collection.js',
@@ -13,6 +13,8 @@
         'source/views/home.screen/home.screen.js',
 
         'source/views/add_expenses.screen/add_expenses.screen.js',
+
+        'source/views/chart_expenses.screen/chart_expenses.screen.js',
 
         'source/views/expenses.screen/expenses.screen.js',
 

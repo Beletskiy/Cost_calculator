@@ -35,14 +35,19 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
-    app.showExpenses = function (month, year) {
+    app.showExpenses = function () {
         var options = {
             container_id: '#screen',
             content: 'expenses.screen',
-            extras: {
-                month: month,
-                year: year
-            }
+            extras: {}
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.showChartExpenses = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'chart_expenses.screen'
         };
         core.publish('navigation.show', options);
     };

@@ -1,0 +1,31 @@
+<div>
+    <div class="wrapper">
+        <h5>EXPENSES <span class="pull-right" id="chart">ch</span></h5>
+        <h5><span class="pull-left" id="l"><</span><span class="pull-right" id="r">></span>{{ this.headerInfo.month }},
+            {{ this.headerInfo.year }}</h5>
+        <h5><b>{{ this.headerInfo.expenses }}</b></h5>
+
+        <table>
+            <tr>
+                <th>DATE</th>
+                <th>CATEGORY</th>
+                <th>AMOUNT</th>
+            </tr>
+        </table>
+        <ul>
+            {{# _.each(model, function(item, index) { }}
+            <li>
+
+                <table>
+                    <tr>
+                        <td> {{ item.date.substr(5,5) }}</td>
+                        <td> {{ item.category }}</td>
+                        <td> {{ item.sum }}</td>
+                    </tr>
+                </table>
+
+            </li>
+            {{# }); }}
+        </ul>
+    </div>
+</div>
