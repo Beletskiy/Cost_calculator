@@ -1,0 +1,14 @@
+{
+    "name": "sticky_test",
+    "application": null,
+    "libs": {},
+    "view": {
+        "second.screen": "/source/views/second.screen",
+        "first.screen": "/source/views/first.screen"
+    },
+    "model": {},
+    "service": {},
+    "screen": {},
+    "external": {},
+    "links": {}
+}
