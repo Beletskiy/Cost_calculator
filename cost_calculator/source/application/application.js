@@ -57,8 +57,16 @@ RAD.application(function (core) {
     };
 
     app.displayedDate = {
-        //month: null,
-        //year: null
+
+    };
+
+    app.changeMonth = function (amountOfTime, view) {
+        var MAX_AMOUNT = 60,
+            MIN_AMOUNT = -60;
+        if ((typeof amountOfTime === 'number') && (amountOfTime < MAX_AMOUNT) && (amountOfTime > MIN_AMOUNT)) {
+            this.displayedDate = this.displayedDate.add(amountOfTime, 'months');
+        }
+        view.onNewExtras();
     };
 
     return app;

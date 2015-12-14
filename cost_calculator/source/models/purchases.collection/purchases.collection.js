@@ -3,7 +3,7 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
     initialize: function () {
         'use strict';
         var purchases = JSON.parse(localStorage.getItem('purchases'));
-       // RAD.application.loadCategories();
+        //RAD.application.loadCategories();
         this.add(purchases);
         this.on('add remove', this.setToLocalStorage);
     },
@@ -41,15 +41,20 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
     getArrayOfExpensesFromCurrentMonth: function () {
         'use strict';
         var collect = this.getResultsFromCurrentMonth(),
-            expensesArr = [];
-        var categories = RAD.model('collection.categories');
-        //console.log(categories);
-        categories.forEach(function (data) {
-           console.log(data.attributes.id);
-        });
-        for (var i = 0; i < collect.length; i++) {
-            expensesArr.push(Number(collect[i].attributes.sum));
+            expensesArr = [], currentId, categoriesId,
+            categories = RAD.model('collection.categories');
+
+        for (var j = 0; j < categories.length; j++) {
+            expensesArr[j] = 0;
+            categoriesId = categories.models[j].attributes.id;
+            for (var i = 0; i < collect.length; i++) {
+                currentId = collect[i].attributes.categoryId;
+                if (currentId === categoriesId) {
+                    expensesArr[j] += Number(collect[i].attributes.sum);
+                }
+            }
         }
         return expensesArr;
     }
+
 }), true);

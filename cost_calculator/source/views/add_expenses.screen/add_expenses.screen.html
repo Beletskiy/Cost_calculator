@@ -12,7 +12,7 @@
                 <select class="form-control" id="costs-type" required>
                     <option selected disabled value="">SELECT CATEGORY</option>
                     {{# _.each(model, function(item, index) { }}
-                    <option>{{ item.name }}</option>
+                    <option data-id = "{{ index }}">{{ item.name }}</option>
                     {{# }); }}
                 </select>
             </div>
