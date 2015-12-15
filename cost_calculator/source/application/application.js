@@ -35,6 +35,14 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
+    app.showAddRevenues = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'add_revenues.screen'
+        };
+        core.publish('navigation.show', options);
+    };
+
     app.showExpenses = function () {
         var options = {
             container_id: '#screen',
@@ -44,10 +52,36 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
+    app.showRevenues = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'revenues.screen',
+            extras: {}
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.showBalance = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'balance.screen',
+            extras: {}
+        };
+        core.publish('navigation.show', options);
+    };
+
     app.showChartExpenses = function () {
         var options = {
             container_id: '#screen',
             content: 'chart_expenses.screen'
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.showChartBalance = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'chart_balance.screen'
         };
         core.publish('navigation.show', options);
     };

@@ -78,3 +78,11 @@ td:nth-child(3), th:nth-child(3) {
     float: right;
     padding-left: 70px;
 }
+
+.ct-bar {
+    stroke-width: 50px;
+}
+
+.ct-label {
+    font-size: 1.3rem;
+}

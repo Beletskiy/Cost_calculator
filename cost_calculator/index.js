@@ -14,9 +14,17 @@
 
         'source/views/add_expenses.screen/add_expenses.screen.js',
 
+        'source/views/add_revenues.screen/add_revenues.screen.js',
+
         'source/views/chart_expenses.screen/chart_expenses.screen.js',
 
+        'source/views/chart_balance.screen/chart_balance.screen.js',
+
         'source/views/expenses.screen/expenses.screen.js',
+
+        'source/views/revenues.screen/revenues.screen.js',
+
+        'source/views/balance.screen/balance.screen.js',
 
         'source/application/application.js'
     ];

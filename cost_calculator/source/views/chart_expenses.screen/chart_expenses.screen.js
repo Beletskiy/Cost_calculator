@@ -27,7 +27,6 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        //this.changeModel(this.model);
         this.render();
         this.drawChart();
     },

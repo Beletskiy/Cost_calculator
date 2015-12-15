@@ -1,26 +1,47 @@
 [
   {
     "name": "Habitation",
-    "id": 0
+    "id": 0,
+    "revenues": false
   },
   {
     "name": "Transport",
-    "id": 1
+    "id": 1,
+    "revenues": false
   },
   {
     "name": "Entertainment",
-    "id": 2
+    "id": 2,
+    "revenues": false
   },
   {
     "name": "Products",
-    "id": 3
+    "id": 3,
+    "revenues": false
   },
   {
     "name": "Food",
-    "id": 4
+    "id": 4,
+    "revenues": false
   },
   {
     "name": "Communication services",
-    "id": 5
+    "id": 5,
+    "revenues": false
+  },
+  {
+    "name": "Salary",
+    "id": 6,
+    "revenues": true
+  },
+  {
+    "name": "Freelance Salary",
+    "id": 7,
+    "revenues": true
+  },
+  {
+    "name": "Passive incomes",
+    "id": 8,
+    "revenues": true
   }
 ]

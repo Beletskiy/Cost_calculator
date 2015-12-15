@@ -1,22 +1,21 @@
-RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
+RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
 
-    url: 'source/views/expenses.screen/expenses.screen.html',
-
+    url: 'source/views/balance.screen/balance.screen.html',
     headerInfo: {
         month: null,
         year: null,
-        expenses: null
+        balance: null
     },
 
     events: {
-        'tap #chart': 'showChartExpenses',
+        'tap #chart': 'showChartBalance',
         'tap #month-minus': 'previousMonth',
         'tap #month-plus': 'nextMonth'
     },
 
     onInitialize: function () {
         'use strict';
-       // this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
+        // this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
     },
 
     onNewExtras: function () {
@@ -27,17 +26,17 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         //this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
         this.model = new Backbone.Collection();
         this.model.reset(collect);
-        this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
+        this.headerInfo.balance = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth() -
+            RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         this.changeModel(this.model);
     },
 
-    showChartExpenses: function () {
+    showChartBalance: function () {
         'use strict';
-        this.application.showChartExpenses();
+        this.application.showChartBalance();
     },
-
 
     previousMonth: function () {
         'use strict';
@@ -48,4 +47,5 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         this.application.changeMonth(1, this);
     }
+
 }));

@@ -1,8 +1,7 @@
 /*global moment */
-RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
+RAD.view('add_revenues.screen', RAD.Blanks.View.extend({
 
-    url: 'source/views/add_expenses.screen/add_expenses.screen.html',
-
+    url: 'source/views/add_revenues.screen/add_revenues.screen.html',
     events: {
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
@@ -46,14 +45,13 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
             costsType = this.$costsType.val(),
             costsTypeId = this.$('#costs-type option:selected').data('id');
         time = moment(time).format('YYYY-MM-DD');
-
         if (this.$formAddCost[0].checkValidity()) {
             RAD.model('collection.purchases').add({
                 date: time,
                 category: costsType,
                 sum: sum,
                 categoryId: costsTypeId,
-                revenue: false
+                revenue: true
             });
             this.$successMessage.show();
             this.clearForm();

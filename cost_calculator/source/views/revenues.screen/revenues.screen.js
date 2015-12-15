@@ -1,11 +1,11 @@
-RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
+RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
 
-    url: 'source/views/expenses.screen/expenses.screen.html',
+    url: 'source/views/revenues.screen/revenues.screen.html',
 
     headerInfo: {
         month: null,
         year: null,
-        expenses: null
+        revenues: null
     },
 
     events: {
@@ -16,7 +16,7 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     onInitialize: function () {
         'use strict';
-       // this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
+        // this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
     },
 
     onNewExtras: function () {
@@ -27,7 +27,7 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         //this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
         this.model = new Backbone.Collection();
         this.model.reset(collect);
-        this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
+        this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         this.changeModel(this.model);
