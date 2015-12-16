@@ -16,6 +16,16 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
+    app.backToHome = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'home.screen',
+            extras: {},
+            animation: 'slide-out'
+        };
+        core.publish('navigation.show', options);
+    };
+
     app.loadCategories = function () {
         core.publish('service.json_loader.get', {
             file: 'jsondata/categories.json',
@@ -94,11 +104,11 @@ RAD.application(function (core) {
 
     };
 
-    app.changeMonth = function (amountOfTime, view) {
+    app.changeMonth = function (amountOfMonth, view) {
         var MAX_AMOUNT = 60,
             MIN_AMOUNT = -60;
-        if ((typeof amountOfTime === 'number') && (amountOfTime < MAX_AMOUNT) && (amountOfTime > MIN_AMOUNT)) {
-            this.displayedDate = this.displayedDate.add(amountOfTime, 'months');
+        if ((typeof amountOfMonth === 'number') && (amountOfMonth < MAX_AMOUNT) && (amountOfMonth > MIN_AMOUNT)) {
+            this.displayedDate = this.displayedDate.add(amountOfMonth, 'months');
         }
         view.onNewExtras();
     };

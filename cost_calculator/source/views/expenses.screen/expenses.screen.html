@@ -1,6 +1,13 @@
 <div>
     <div class="wrapper">
-        <h5>EXPENSES <span class="pull-right" id="chart">ch</span></h5>
+        <h5><span class = "pull-left" id = "to-home-page"><--</span> <span class="pull-right" id="chart">chart</span></h5>
+
+        <select class="form-control" id="expenses-type">
+            <option selected data-id = "1">EXPENSES BY DATE</option>
+            <option data-id = "2">EXPENSES BY CATEGORY</option>
+            <option data-id = "3">EXPENSES BY AMOUNT</option>
+        </select>
+
         <h5><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{ this.headerInfo.month }},
             {{ this.headerInfo.year }}</h5>
         <h5><b>{{ this.headerInfo.expenses }}</b></h5>

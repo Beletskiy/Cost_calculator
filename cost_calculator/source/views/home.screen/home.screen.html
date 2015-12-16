@@ -1,6 +1,6 @@
 <div>
     <div class="wrapper">
-        <h5 id = "date"><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{
+        <h5 id="date"><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{
             this.headerInfo.month }},
             {{ this.headerInfo.year }}</h5>
 
@@ -10,7 +10,10 @@
 
                 <p class="total-sum">{{ this.headerInfo.revenues - this.headerInfo.expenses }}</p>
 
-                <p class="previous-month"><span class="previous-sum pull-right">+12.044,50</span>Previous month</p>
+                <p class="previous-month">
+                    <span class="previous-sum pull-right">
+                        {{ this.headerInfo.revenuesDiff - this.headerInfo.expensesDiff }}
+                    </span>Previous month</p>
             </div>
         </div>
         <div class="total" id="total-revenues">
@@ -19,7 +22,8 @@
 
                 <p class="total-sum">{{ this.headerInfo.revenues }}</p>
 
-                <p class="previous-month"><span class="previous-sum pull-right">+10.999,00</span>Previous month</p>
+                <p class="previous-month"><span
+                        class="previous-sum pull-right">{{ this.headerInfo.revenuesDiff }}</span>Previous month</p>
             </div>
         </div>
         <div class="total" id="total-expenses">
@@ -28,7 +32,8 @@
 
                 <p class="total-sum"> {{ this.headerInfo.expenses }}</p>
 
-                <p class="previous-month"><span class="previous-sum pull-right">-1.056,50</span>Previous month</p>
+                <p class="previous-month"><span
+                        class="previous-sum pull-right">{{ this.headerInfo.expensesDiff }}</span>Previous month</p>
             </div>
         </div>
         <p class="bottom-total"><span class="pull-left" id="add-expenses">Add expenses</span>

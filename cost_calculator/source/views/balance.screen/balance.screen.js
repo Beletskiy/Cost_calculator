@@ -10,7 +10,8 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
     events: {
         'tap #chart': 'showChartBalance',
         'tap #month-minus': 'previousMonth',
-        'tap #month-plus': 'nextMonth'
+        'tap #month-plus': 'nextMonth',
+        'tap #to-home-page': 'toHomePage'
     },
 
     onInitialize: function () {
@@ -46,6 +47,11 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
     nextMonth: function () {
         'use strict';
         this.application.changeMonth(1, this);
+    },
+
+    toHomePage: function () {
+        'use strict';
+        this.application.backToHome();
     }
 
 }));

@@ -1,4 +1,4 @@
-/* global moment */
+
 RAD.view('home.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/home.screen/home.screen.html',
@@ -14,7 +14,9 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
         month: null,
         year: null,
         expenses: null,
-        revenues: null
+        revenues: null,
+        expensesDiff: null,
+        revenuesDiff: null
     },
 
     onInitialize: function () {
@@ -26,15 +28,24 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
         this.headerInfo.year = now.format('YYYY');
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
+        this.headerInfo.expensesDiff = this.headerInfo.expenses -
+            RAD.model('collection.purchases').getCommonExpensesFromPreviousMonth(1);
+        this.headerInfo.revenuesDiff = this.headerInfo.revenues -
+            RAD.model('collection.purchases').getCommonRevenuesFromPreviousMonth(1);
     },
 
     onNewExtras: function () {
         'use strict';
         // console.log('from extras home');
+
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
+        this.headerInfo.expensesDiff = this.headerInfo.expenses -
+            RAD.model('collection.purchases').getCommonExpensesFromPreviousMonth(1);
+        this.headerInfo.revenuesDiff = this.headerInfo.revenues -
+            RAD.model('collection.purchases').getCommonRevenuesFromPreviousMonth(1);
         this.render();
     },
 
