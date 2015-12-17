@@ -34,7 +34,7 @@
         var core = window.RAD.core,
             application = window.RAD.application,
             coreOptions = {
-                defaultBackstack: true,
+                defaultBackstack: false,
                 defaultAnimation: 'slide',
                 animationTimeout: 3000,
                 debug: false

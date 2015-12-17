@@ -62,6 +62,16 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
+    app.backToExpenses = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'expenses.screen',
+            extras: {},
+            animation: 'slide-out'
+        };
+        core.publish('navigation.show', options);
+    };
+
     app.showRevenues = function () {
         var options = {
             container_id: '#screen',
@@ -71,11 +81,31 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
+    app.backToRevenues = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'revenues.screen',
+            extras: {},
+            animation: 'slide-out'
+        };
+        core.publish('navigation.show', options);
+    };
+
     app.showBalance = function () {
         var options = {
             container_id: '#screen',
             content: 'balance.screen',
             extras: {}
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.backToBalance = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'balance.screen',
+            extras: {},
+            animation: 'slide-out'
         };
         core.publish('navigation.show', options);
     };

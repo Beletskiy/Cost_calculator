@@ -13,6 +13,7 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         'tap #month-minus': 'previousMonth',
         'tap #month-plus': 'nextMonth',
         'tap #to-home-page': 'toHomePage',
+        'tap #to-add-expenses-page': 'toAddExpensesPage',
         'change #expenses-type': 'changeExpenses'
     },
 
@@ -53,6 +54,11 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
     toHomePage: function () {
         'use strict';
         this.application.backToHome();
+    },
+
+    toAddExpensesPage: function () {
+        'use strict';
+        this.application.showAddExpenses();
     },
 
     changeExpenses: function () {

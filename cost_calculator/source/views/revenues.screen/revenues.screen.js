@@ -12,7 +12,8 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
         'tap #chart': 'showChartExpenses',
         'tap #month-minus': 'previousMonth',
         'tap #month-plus': 'nextMonth',
-        'tap #to-home-page': 'toHomePage'
+        'tap #to-home-page': 'toHomePage',
+        'tap #to-add-revenues-page': 'toAddRevenuesPage'
     },
 
     onInitialize: function () {
@@ -53,5 +54,10 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
     toHomePage: function () {
         'use strict';
        this.application.backToHome();
+    },
+
+    toAddRevenuesPage: function () {
+        'use strict';
+        this.application.showAddRevenues();
     }
 }));

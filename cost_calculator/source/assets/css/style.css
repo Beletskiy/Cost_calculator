@@ -86,3 +86,9 @@ td:nth-child(3), th:nth-child(3) {
 .ct-label {
     font-size: 1.3rem;
 }
+div.square {
+    width: 20px;
+    height: 20px;
+    float: left;
+    border: solid 1px black;
+}

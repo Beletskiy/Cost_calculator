@@ -1,4 +1,4 @@
-/*global moment */
+
 RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/add_expenses.screen/add_expenses.screen.html',
@@ -6,7 +6,8 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
     events: {
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
-        'tap input, select, #back-button': 'hideSuccessMessage'
+        'tap input, select, #back-button': 'hideSuccessMessage',
+        'tap #to-expenses-page': 'toExpensesPage'
     },
 
     model: RAD.model('collection.categories'),
@@ -69,6 +70,11 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
     hideSuccessMessage: function () {
         'use strict';
         this.$successMessage.hide();
+    },
+
+    toExpensesPage: function () {
+        'use strict';
+        this.application.backToExpenses();
     }
 
 }));

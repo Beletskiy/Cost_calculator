@@ -1,4 +1,4 @@
-/*global  Chartist*/
+
 RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/chart_balance.screen/chart_balance.screen.html',
@@ -10,42 +10,27 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
 
     events: {
         'tap #month-minus': 'previousMonth',
-        'tap #month-plus': 'nextMonth'
+        'tap #month-plus': 'nextMonth',
+        'tap #to-balance-page': 'toBalancePage'
     },
-
-    currentRevenues: RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth(),
-    currentExpenses: RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth(),
 
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
-        this.headerInfo.balance = this.currentRevenues - this.currentExpenses;
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
     },
 
     onNewExtras: function () {
         'use strict';
-        this.currentRevenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
-        this.currentExpenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
-        this.headerInfo.balance = this.currentRevenues - this.currentExpenses;
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        this.render();
-        this.drawChart();
+        this.init();
     },
 
     onStartAttach: function () {
         'use strict';
         var self = this;
+        this.init();
         $(window).resize(function () {
             self.drawChart();
         });
-    },
-
-    onEndAttach: function () {
-        'use strict';
-        this.drawChart();
     },
 
     onEndDetach: function () {
@@ -62,6 +47,22 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
     nextMonth: function () {
         'use strict';
         this.application.changeMonth(1, this);
+    },
+
+    toBalancePage: function () {
+        'use strict';
+        this.application.backToBalance();
+    },
+
+    init: function () {
+        'use strict';
+        this.currentRevenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
+        this.currentExpenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
+        this.headerInfo.balance = this.currentRevenues - this.currentExpenses;
+        this.headerInfo.month = this.application.displayedDate.format('MMMM');
+        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.render();
+        this.drawChart();
     },
 
     drawChart: function () {

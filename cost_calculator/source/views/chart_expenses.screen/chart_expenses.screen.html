@@ -1,9 +1,13 @@
 <div>
     <div class="wrapper">
-        <h5>EXPENSES CHART</h5>
+        <h5><span class = "pull-left" id = "to-expenses-page"><--</span>EXPENSES CHART</h5>
         <h5><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{ this.headerInfo.month }},
             {{ this.headerInfo.year }}</h5>
         <h5><b>{{ this.headerInfo.expenses }}</b></h5>
         <div class="ct-chart"></div>
+        <div class="chart-legend">
+            <div class = "square"></div>
+            <span> Transport</span>
+        </div>
     </div>
 </div>
