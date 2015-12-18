@@ -1,17 +1,16 @@
-RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
+RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
 
-    url: 'source/views/chart_expenses.screen/chart_expenses.screen.html',
-
+    url: 'source/views/chart_revenues.screen/chart_revenues.screen.html',
     headerInfo: {
         month: null,
         year: null,
-        expenses: null
+        revenues: null
     },
 
     events: {
         'tap #month-minus': 'previousMonth',
         'tap #month-plus': 'nextMonth',
-        'tap #to-expenses-page': 'toExpensesPage'
+        'tap #to-revenues-page': 'toRevenuesPage'
     },
 
     $legend: null,
@@ -20,20 +19,16 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         'use strict';
         this.application.loadCategories();
         this.$legend = document.createElement('div');
-        this.$legend.setAttribute('class', 'chart-legend'); //todo add jquery
+        this.$legend.setAttribute('class', 'chart-legend');
     },
 
     onStartAttach: function () {
         'use strict';
+        var self = this;
         this.init();
-
-        if (window.screen.width > window.screen.height) {
-            this.$legend.setAttribute('class', 'chart-legend-landscape');
-            $('.ct-chart').addClass('ct-chart-landscape');
-        } else {
-            $('.ct-chart').removeClass('ct-chart-landscape');
-        }
-
+        $(window).resize(function () {
+            self.drawChart();
+        });
     },
 
     onEndDetach: function () {
@@ -43,7 +38,7 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
 
     init: function () {
         'use strict';
-        this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
+        this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         this.render();
@@ -60,17 +55,17 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         this.application.changeMonth(1, this.init.bind(this));
     },
 
-    toExpensesPage: function () {
+    toRevenuesPage: function () {
         'use strict';
-        this.application.backToExpenses();
+        this.application.backToRevenues();
     },
 
     drawChart: function () {
         'use strict';
-        //console.log('draw chart');
+        console.log('draw chart');
         calculateCurrentInnerSizes();
-        var currentInnerHeight = 0, currentInnerWeight = 0, div, span,br,
-            arrOfExpenses = RAD.model('collection.purchases').getArrayOfExpensesFromCurrentMonth(),
+        var currentInnerHeight = 0, currentInnerWeight = 0, div, span, br,
+            arrOfExpenses = RAD.model('collection.purchases').getArrayOfRevenuesFromCurrentMonth(),
             data = {
                 series: []
             };
@@ -79,7 +74,7 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
             return a + b;
         };
 
-        while(this.$legend.firstChild) {
+        while (this.$legend.firstChild) {
             this.$legend.removeChild(this.$legend.firstChild);
         }
 
@@ -100,8 +95,8 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         }
 
         var options = {
-           // width: currentInnerWeight,
-           // height: currentInnerHeight,
+            width: currentInnerWeight,
+            height: currentInnerHeight,
             labelInterpolationFnc: function (value) {
                 return Math.round(value / data.series.reduce(sum) * 100) + '%';
             }

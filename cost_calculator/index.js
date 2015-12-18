@@ -18,6 +18,8 @@
 
         'source/views/chart_expenses.screen/chart_expenses.screen.js',
 
+        'source/views/chart_revenues.screen/chart_revenues.screen.js',
+
         'source/views/chart_balance.screen/chart_balance.screen.js',
 
         'source/views/expenses.screen/expenses.screen.js',

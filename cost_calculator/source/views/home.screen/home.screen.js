@@ -21,23 +21,19 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
 
     onInitialize: function () {
         'use strict';
-        // console.log('from init home');
         var now = moment();
         this.application.displayedDate = now;
         this.headerInfo.month = now.format('MMMM');
         this.headerInfo.year = now.format('YYYY');
-        this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
-        this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
-        this.headerInfo.expensesDiff = this.headerInfo.expenses -
-            RAD.model('collection.purchases').getCommonExpensesFromPreviousMonth(1);
-        this.headerInfo.revenuesDiff = this.headerInfo.revenues -
-            RAD.model('collection.purchases').getCommonRevenuesFromPreviousMonth(1);
     },
 
-    onNewExtras: function () {
+    onStartAttach: function () {
         'use strict';
-        // console.log('from extras home');
+        this.init();
+    },
 
+    init: function () {
+        'use strict';
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
@@ -78,12 +74,12 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this);
+        this.application.changeMonth(-1, this.init.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this);
+        this.application.changeMonth(1, this.init.bind(this));
     },
 
     swipe: function (e) {

@@ -115,9 +115,27 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
         return expensesArr;
     },
 
-    getNumberOfExpensesCategories: function () {
+    getArrayOfRevenuesFromCurrentMonth: function () {
         'use strict';
+        var collect = this.getResultsFromCurrentMonth(),
+            revenuesArr = [], currentId, categoriesId,
+            categories = RAD.model('collection.categories');
 
-    }
+        for (var j = 0; j < categories.length; j++) {
+            categoriesId = categories.models[j].attributes.id;
+            revenuesArr[j] = {id: categoriesId, value: 0};
+            for (var i = 0; i < collect.length; i++) {
+                if (collect[i].attributes.revenue === true) {
+                    currentId = collect[i].attributes.categoryId;
+                    if (currentId === categoriesId) {
+                        revenuesArr[j].value += Number(collect[i].attributes.sum);
+                    }
+                }
+            }
+        }
+        return revenuesArr;
+    },
+
+
 
 }), true);

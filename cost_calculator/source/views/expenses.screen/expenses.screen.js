@@ -19,15 +19,18 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     onInitialize: function () {
         'use strict';
-       // this.listenTo(RAD.model('collection.purchases'), 'add', this.render());
+        this.model = new Backbone.Collection();
     },
 
-    onNewExtras: function () {
+    onStartAttach: function () {
         'use strict';
+        this.init();
+    },
 
+    init: function () {
+        'use strict';
         var collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
 
-        this.model = new Backbone.Collection();
         this.model.reset(collect);
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
@@ -43,12 +46,12 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this);
+        this.application.changeMonth(-1, this.init.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this);
+        this.application.changeMonth(1, this.init.bind(this));
     },
 
     toHomePage: function () {

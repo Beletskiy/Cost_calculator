@@ -86,9 +86,64 @@ td:nth-child(3), th:nth-child(3) {
 .ct-label {
     font-size: 1.3rem;
 }
-div.square {
-    width: 20px;
-    height: 20px;
-    float: left;
-    border: solid 1px black;
+
+.ct-chart-landscape {
+    width: 60%;
+    float: right;
 }
+
+.chart-legend-landscape {
+    margin-top: 30px;
+}
+
+div.square {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    float: left;
+}
+
+#ct-legend-0 {
+    background: #d70206;
+}
+
+#ct-legend-1 {
+    background: #f05b4f;
+}
+
+#ct-legend-2 {
+    background: #f4c63d;
+}
+
+#ct-legend-3 {
+    background: #d17905;
+}
+
+#ct-legend-4 {
+    background: #453d3f;
+}
+
+#ct-legend-5 {
+    background: #59922b;
+}
+
+#ct-legend-6 {
+    background: #0544d3;
+}
+
+#ct-legend-7 {
+    background: #6b0392;
+}
+
+#ct-legend-8 {
+    background: #f05b4f;
+}
+
+#ct-legend-9 {
+    background: #dda458;
+}
+
+
+
+
+

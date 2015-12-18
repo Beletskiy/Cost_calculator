@@ -20,7 +20,6 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'home.screen',
-            extras: {},
             animation: 'slide-out'
         };
         core.publish('navigation.show', options);
@@ -56,8 +55,7 @@ RAD.application(function (core) {
     app.showExpenses = function () {
         var options = {
             container_id: '#screen',
-            content: 'expenses.screen',
-            extras: {}
+            content: 'expenses.screen'
         };
         core.publish('navigation.show', options);
     };
@@ -66,7 +64,6 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'expenses.screen',
-            extras: {},
             animation: 'slide-out'
         };
         core.publish('navigation.show', options);
@@ -75,8 +72,7 @@ RAD.application(function (core) {
     app.showRevenues = function () {
         var options = {
             container_id: '#screen',
-            content: 'revenues.screen',
-            extras: {}
+            content: 'revenues.screen'
         };
         core.publish('navigation.show', options);
     };
@@ -85,7 +81,6 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'revenues.screen',
-            extras: {},
             animation: 'slide-out'
         };
         core.publish('navigation.show', options);
@@ -94,8 +89,7 @@ RAD.application(function (core) {
     app.showBalance = function () {
         var options = {
             container_id: '#screen',
-            content: 'balance.screen',
-            extras: {}
+            content: 'balance.screen'
         };
         core.publish('navigation.show', options);
     };
@@ -104,7 +98,6 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'balance.screen',
-            extras: {},
             animation: 'slide-out'
         };
         core.publish('navigation.show', options);
@@ -114,6 +107,14 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'chart_expenses.screen'
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.showChartRevenues = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'chart_revenues.screen'
         };
         core.publish('navigation.show', options);
     };
@@ -130,17 +131,17 @@ RAD.application(function (core) {
         window.history.back();
     };
 
-    app.displayedDate = {
+    app.displayedDate = {};
 
-    };
-
-    app.changeMonth = function (amountOfMonth, view) {
+    app.changeMonth = function (amountOfMonth, callback) {
         var MAX_AMOUNT = 60,
             MIN_AMOUNT = -60;
         if ((typeof amountOfMonth === 'number') && (amountOfMonth < MAX_AMOUNT) && (amountOfMonth > MIN_AMOUNT)) {
             this.displayedDate = this.displayedDate.add(amountOfMonth, 'months');
         }
-        view.onNewExtras();
+        if (callback && typeof callback === 'function') {
+            callback();
+        }
     };
 
     return app;

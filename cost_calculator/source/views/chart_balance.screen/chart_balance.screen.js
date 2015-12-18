@@ -19,11 +19,6 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
         this.application.loadCategories();
     },
 
-    onNewExtras: function () {
-        'use strict';
-        this.init();
-    },
-
     onStartAttach: function () {
         'use strict';
         var self = this;
@@ -41,12 +36,12 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this);
+        this.application.changeMonth(-1, this.init.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this);
+        this.application.changeMonth(1, this.init.bind(this));
     },
 
     toBalancePage: function () {
