@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cost Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet'>
+    <link href="css/cost-calculator.css" rel="stylesheet">
+</head>
+<body> <!--Provide adding class "h-oh" when is open-->
+    <div class="page">
+        <div class="datepicker datepicker--without-money">
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta">
+                <span class="icon icon--arrow-left"></span>
+            </button>
+            <div>
+                <div class="datepicker__date">
+                    Desember, 2015
+                </div>
+                <div class="datepicker__money">
+                    1,234,000.00
+                </div>
+            </div>
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-right s-cvta">
+                <span class="icon icon--arrow-right"></span>
+            </button>
+        </div>
+
+        <div class="tiles">
+            <div class="tile tile--home tile--balance">
+                <div class="tile__content">
+                    <h2 class="tile__name">
+                        <span class="icon icon--total-balance"></span>
+                        total balance
+                    </h2>
+                    <p class="tile__value">
+                        1,000,599.30
+                    </p>
+                    <p class="tile__diff">
+                        previous month
+                        <span class="tile__diff-number">
+                            +12,044.50
+                        </span>
+                    </p>
+                </div>
+                <a class="s-fa" href="total-balance.html"></a>
+            </div>
+            <div class="tile tile--home tile--revenue">
+                <div class="tile__content">
+                    <h2 class="tile__name">
+                        <span class="icon icon--total-revenue"></span>
+                        total revenue
+                    </h2>
+                    <p class="tile__value">
+                        2,234,699.30
+                    </p>
+                    <p class="tile__diff">
+                        previous month
+                        <span class="tile__diff-number">
+                            +1,000
+                        </span>
+                    </p>
+                </div>
+                <a class="s-fa" href="#"></a>
+            </div>
+            <div class="tile tile--home tile--expenses">
+                <div class="tile__content">
+                    <h2 class="tile__name">
+                        <span class="icon icon--total-expenses"></span>
+                        total expenses
+                    </h2>
+                    <p class="tile__value">
+                        1,123,000.00
+                    </p>
+                    <p class="tile__diff">
+                        previous month
+                        <span class="tile__diff-number">
+                            -1,056.50
+                        </span>
+                    </p>
+                </div>
+                <a class="s-fa" href="expenses-by-date.html"></a>
+                <button class="tile__control btn" type="button">
+                    <span class="icon icon--more"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="btn-hold btn-hold--add">
+            <a class="btn btn--add btn--add-expenses" href="add-expenses.html">
+                <div class="btn__content">
+                    <span class="icon icon--add-expenses"></span>
+                    add expenses
+                </div>
+            </a>
+            <a class="btn btn--add btn--add-revenue" href="#">
+                <div class="btn__content">
+                    <span class="icon icon--add-revenue"></span>
+                    add revenue
+                </div>
+            </a>
+        </div>
+
+        <div class="menu"> <!--Add class "menu--open" to open menu-->
+            <div class="menu__overlay s-fa"></div>
+            <ul class="menu__list s-fa">
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--plan" href="#">
+                        <span class="mark-text__text">
+                            plan your expenses
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--settings" href="#">
+                        <span class="mark-text__text">
+                            settings
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--cancel" href="#">
+                        <span class="mark-text__text">
+                            cancel
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

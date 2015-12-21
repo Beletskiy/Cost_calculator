@@ -1,0 +1,65 @@
+.mark-text::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.mark-text__text {
+  font: 16px "Lato Regular",sans-serif;
+  color: white;
+  vertical-align: middle;
+}
+
+
+
+/*--== MODIFIERS ==--*/
+
+/*Menu*/
+
+.mark-text--menu {
+  display: block;
+  padding: 15px 0;
+  text-decoration: none;
+}
+
+.mark-text--menu .mark-text__text {
+  text-transform: uppercase;
+}
+
+.mark-text--plan::before {
+  background: orange;
+}
+
+.mark-text--settings::before {
+  background: blue;
+}
+
+.mark-text--remove::before {
+  background: red;
+}
+
+.mark-text--edit::before {
+  background: green;
+}
+
+.mark-text--cancel::before {
+  background: grey;
+}
+
+
+/*Expenses by category*/
+
+.mark-text--transport::before {
+  background: yellow;
+}
+
+.mark-text--shopping::before {
+  background: orange;
+}
+
+.mark-text--petrol::before {
+  background: red;
+}

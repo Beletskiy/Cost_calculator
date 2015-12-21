@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cost Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet'>
+    <link href="css/cost-calculator.css" rel="stylesheet">
+</head>
+<body> <!--Provide adding class "h-oh" when is open-->
+    <div class="page">
+        <nav class="nav nav--expenses-by-date">
+            <a class="nav__control nav__control--back btn s-cvta" href="index.html">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title nav__title--link" href="expenses-by-category.html">
+                    expenses by date
+                <span class="icon icon--caret s-cvta"></span>
+            </a>
+            <a class="nav__control nav__control--chart btn s-cvta" href="#">
+                <span class="icon icon--chart"></span>
+            </a>
+            <button class="nav__control nav__control--more btn s-cvta" type="button">
+                <span class="icon icon--more"></span>
+            </button>
+        </nav>
+
+        <div class="datepicker">
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta">
+                <span class="icon icon--arrow-left"></span>
+            </button>
+            <div>
+                <div class="datepicker__date">
+                    Desember, 2015
+                </div>
+                <div class="datepicker__money">
+                    1,234,000.00
+                </div>
+            </div>
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-right s-cvta">
+                <span class="icon icon--arrow-right"></span>
+            </button>
+        </div>
+
+        <div class="table-hold">
+            <table class="table">
+                <thead>
+                    <tr class="table__row table__row--head">
+                        <th class="table__title table__title--1">
+                            date
+                        </th>
+                        <th class="table__title">
+                            category
+                        </th>
+                        <th class="table__title table__title--3">
+                            amount
+                        </th>
+                        <th class="table__title"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table__row table__row--notification">
+                        <td class="table__data table__data--notification" colspan="4">
+                            <div class="table__notification-title">
+                                notification
+                            </div>
+                            <div class="table__notification-text">
+                                You exceeded limit SHOPPING category
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table__row">
+                        <td class="table__data">
+                            12/12
+                        </td>
+                        <td class="table__data">
+                            Transport
+                        </td>
+                        <td class="table__data table__data--3">
+                            1,2013.00
+                        </td>
+                        <td class="table__data table__data--4">
+                            <button class="table__control btn" type="button">
+                                <span class="icon icon--more"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table__row">
+                        <td class="table__data">
+                            13/12
+                        </td>
+                        <td class="table__data">
+                            Shopping
+                        </td>
+                        <td class="table__data table__data--3">
+                            1,2013.00
+                        </td>
+                        <td class="table__data table__data--4">
+                            <button class="table__control btn" type="button">
+                                <span class="icon icon--more"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table__row">
+                        <td class="table__data">
+                            14/12
+                        </td>
+                        <td class="table__data">
+                            Shopping
+                        </td>
+                        <td class="table__data table__data--3">
+                            1,2013.00
+                        </td>
+                        <td class="table__data table__data--4">
+                            <button class="table__control btn" type="button">
+                                <span class="icon icon--more"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="table__row">
+                        <td class="table__data">
+                            14/12
+                        </td>
+                        <td class="table__data">
+                            Petrol
+                        </td>
+                        <td class="table__data table__data--3">
+                            1,2013.00
+                        </td>
+                        <td class="table__data table__data--4">
+                            <button class="table__control btn" type="button">
+                                <span class="icon icon--more"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn--round" href="add-expenses.html">
+            <span class="icon icon--add s-cta"></span>
+        </a>
+
+        <div class="menu"> <!--Add class "menu--open" to open menu-->
+            <div class="menu__overlay s-fa"></div>
+            <ul class="menu__list">
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--plan" href="plan-your-expenses.html">
+                        <span class="mark-text__text">
+                            plan your expenses
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--settings" href="settings.html">
+                        <span class="mark-text__text">
+                            settings
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--cancel" href="#">
+                        <span class="mark-text__text">
+                            cancel
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

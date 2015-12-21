@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cost Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet'>
+    <link href="css/cost-calculator.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <nav class="nav">
+            <a class="nav__control nav__control--back btn s-cvta" href="expenses-by-category.html">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title" href="#">
+                add expenses
+            </a>
+        </nav>
+
+        <form class="form" action="#">
+            <div class="form__group">
+                <input class="form__input" type="text" placeholder="select date">
+                <p class="form__msg"></p>
+            </div>
+            <div class="form__group">
+                <input class="form__input" type="text" placeholder="enter category">
+                <p class="form__msg"></p>
+            </div>
+            <div class="form__group">
+                <input class="form__input" type="text" placeholder="amount expense">
+                <p class="form__msg"></p>
+            </div>
+            <button class="btn btn--submit" type="submit">
+                add
+            </button>
+        </form>
+    </div>
+</body>
+</html>

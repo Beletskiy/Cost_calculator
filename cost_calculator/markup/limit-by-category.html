@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cost Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet'>
+    <link href="css/cost-calculator.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <nav class="nav">
+            <a class="nav__control nav__control--back btn s-cvta" href="plan-your-expenses.html">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title" href="#">
+                limit by category
+            </a>
+        </nav>
+
+        <form class="form" action="#">
+            <div class="form__group">
+                <select class="dropdown form__input" name="expenseCategory">
+                    <option selected>
+                        SELECT CATEGORY
+                    </option>
+                    <option value="1">
+                        TRANSPORT
+                    </option>
+                    <option value="2">
+                        SHOPPING
+                    </option>
+                    <option value="3">
+                        PETROL
+                    </option>
+                </select>
+                <p class="form__msg"></p>
+            </div>
+            <div class="form__group">
+                <input class="form__input" type="text" placeholder="limit amount">
+                <p class="form__msg"></p>
+            </div>
+            <div class="form__group">
+                <div class="btn-group">
+                    <input id="btnGroup1" class="btn-group__switch btn-group__switch--1" type="radio" name="btnGroup">
+                    <input id="btnGroup2" class="btn-group__switch btn-group__switch--2" type="radio" name="btnGroup" checked>
+                    <label class="btn-group__btn btn btn-group__btn--1of2 btn-group__btn--1" for="btnGroup1">
+                        day
+                    </label>
+                    <label class="btn-group__btn btn btn-group__btn--1of2 btn-group__btn--2" for="btnGroup2">
+                        month
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn--submit" type="submit">
+                add
+            </button>
+        </form>
+    </div>
+</body>
+</html>
