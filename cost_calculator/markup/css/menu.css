@@ -19,17 +19,17 @@
 }
 
 .menu__list {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: auto;
   padding: 20px;
   background: #1D5953;
+  -webkit-transform: -webkit-translateY(100%);
   transform: translateY(100%);
+  transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
 }
 
 .menu--open .menu__list {
+  -webkit-transform: -webkit-translateY(0);
   transform: translateY(0);
 }
 
