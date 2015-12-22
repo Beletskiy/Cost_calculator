@@ -59,7 +59,7 @@ p.bottom-total {
     font-size: 16px;
 }
 
-table {
+/*table {
     width: 100%;
 }
 
@@ -77,7 +77,7 @@ td:nth-child(3), th:nth-child(3) {
     width: 50%;
     float: right;
     padding-left: 70px;
-}
+} */
 
 .ct-bar {
     stroke-width: 50px;
@@ -141,6 +141,10 @@ div.square {
 
 #ct-legend-9 {
     background: #dda458;
+}
+
+.scroll-view {
+    background: url(../cost_calculator/source/assets/img/bg2x.png) 0 0/cover no-repeat;
 }
 
 

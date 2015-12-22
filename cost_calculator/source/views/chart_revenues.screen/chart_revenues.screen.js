@@ -18,22 +18,14 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
-        this.$legend = document.createElement('div');
-        this.$legend.setAttribute('class', 'chart-legend');
+        this.$legend = $(document.createElement('div'));
+        this.$legend.addClass('chart-legend');
+        this.$wrapper = $('.wrapper');
     },
 
-    onStartAttach: function () {
+    onEndAttach: function () {
         'use strict';
-        var self = this;
         this.init();
-        $(window).resize(function () {
-            self.drawChart();
-        });
-    },
-
-    onEndDetach: function () {
-        'use strict';
-        $(window).off('resize');
     },
 
     init: function () {
@@ -62,9 +54,7 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
 
     drawChart: function () {
         'use strict';
-        console.log('draw chart');
-        calculateCurrentInnerSizes();
-        var currentInnerHeight = 0, currentInnerWeight = 0, div, span, br,
+        var div, span, br,
             arrOfExpenses = RAD.model('collection.purchases').getArrayOfRevenuesFromCurrentMonth(),
             data = {
                 series: []
@@ -74,9 +64,7 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
             return a + b;
         };
 
-        while (this.$legend.firstChild) {
-            this.$legend.removeChild(this.$legend.firstChild);
-        }
+        this.$legend.empty();
 
         for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
             if (arrOfExpenses[i].value !== 0) {
@@ -87,28 +75,22 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
                 div.setAttribute('class', 'square');
                 div.setAttribute('id', 'ct-legend-' + k);
                 span.innerHTML = RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id);
-                this.$legend.appendChild(div);
-                this.$legend.appendChild(span);
-                this.$legend.appendChild(br);
+                this.$legend.append(div);
+                this.$legend.append(span);
+                this.$legend.append(br);
                 k++;
             }
         }
 
         var options = {
-            width: currentInnerWeight,
-            height: currentInnerHeight,
             labelInterpolationFnc: function (value) {
                 return Math.round(value / data.series.reduce(sum) * 100) + '%';
             }
         };
 
         new Chartist.Pie('.ct-chart', data, options);
-        $('.wrapper').append(this.$legend);
+        this.$wrapper.append(this.$legend);
 
-        function calculateCurrentInnerSizes() {
-            currentInnerHeight = window.innerHeight;
-            currentInnerWeight = window.innerWidth;
-        }
     }
 
 }));

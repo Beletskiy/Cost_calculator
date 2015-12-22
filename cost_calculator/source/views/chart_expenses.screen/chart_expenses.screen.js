@@ -15,25 +15,36 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
     },
 
     $legend: null,
+    $chart: null,
 
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
-        this.$legend = document.createElement('div');
-        this.$legend.setAttribute('class', 'chart-legend'); //todo add jquery
+        this.$chart = $(document.createElement('div'));
+        this.$chart.addClass('ct-chart');
+        this.$legend = $(document.createElement('div'));
+        this.$legend.addClass('chart-legend');
+    },
+
+    onEndRender: function () {
+        'use strict';
+        this.$wrapper = $('.wrapper');
+        this.$wrapper.append(this.$chart);
     },
 
     onStartAttach: function () {
         'use strict';
         this.init();
+    },
 
-        if (window.screen.width > window.screen.height) {
-            this.$legend.setAttribute('class', 'chart-legend-landscape');
-            $('.ct-chart').addClass('ct-chart-landscape');
-        } else {
-            $('.ct-chart').removeClass('ct-chart-landscape');
-        }
+    onEndAttach: function () {
+        'use strict';
+        var self = this;
+        this.init();
 
+        $(window).resize(function () {
+            self.changeChartDisposition();
+        });
     },
 
     onEndDetach: function () {
@@ -43,11 +54,13 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
 
     init: function () {
         'use strict';
+        this.changeChartDisposition();
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         this.render();
-        this.drawChart();
+        this.drawChart();// поместить в onEndRender...
+
     },
 
     previousMonth: function () {
@@ -65,11 +78,20 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         this.application.backToExpenses();
     },
 
+    changeChartDisposition: function () {
+        'use strict';
+        if (window.screen.width > window.screen.height) {
+            this.$chart.addClass('ct-chart-landscape');
+            this.$legend.addClass('chart-legend-landscape');
+        } else {
+            this.$chart.removeClass('ct-chart-landscape');
+            this.$legend.removeClass('chart-legend-landscape');
+        }
+    },
+
     drawChart: function () {
         'use strict';
-        //console.log('draw chart');
-        calculateCurrentInnerSizes();
-        var currentInnerHeight = 0, currentInnerWeight = 0, div, span,br,
+        var div, span, br,
             arrOfExpenses = RAD.model('collection.purchases').getArrayOfExpensesFromCurrentMonth(),
             data = {
                 series: []
@@ -79,9 +101,7 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
             return a + b;
         };
 
-        while(this.$legend.firstChild) {
-            this.$legend.removeChild(this.$legend.firstChild);
-        }
+        this.$legend.empty();
 
         for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
             if (arrOfExpenses[i].value !== 0) {
@@ -92,28 +112,21 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
                 div.setAttribute('class', 'square');
                 div.setAttribute('id', 'ct-legend-' + k);
                 span.innerHTML = RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id);
-                this.$legend.appendChild(div);
-                this.$legend.appendChild(span);
-                this.$legend.appendChild(br);
+                this.$legend.append(div);
+                this.$legend.append(span);
+                this.$legend.append(br);
                 k++;
             }
         }
 
         var options = {
-           // width: currentInnerWeight,
-           // height: currentInnerHeight,
             labelInterpolationFnc: function (value) {
                 return Math.round(value / data.series.reduce(sum) * 100) + '%';
             }
         };
 
         new Chartist.Pie('.ct-chart', data, options);
-        $('.wrapper').append(this.$legend);
-
-        function calculateCurrentInnerSizes() {
-            currentInnerHeight = window.innerHeight;
-            currentInnerWeight = window.innerWidth;
-        }
+        this.$wrapper.append(this.$legend);
     }
 
 }));
