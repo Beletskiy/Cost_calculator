@@ -1,13 +1,19 @@
 <div>
     <div class="page">
         <nav class="nav nav--expenses-by-date">
-            <a class="nav__control nav__control--back btn s-cvta" href="#">
-                <span class="icon icon--back" id = "to-home-page"></span>
+            <a class="nav__control nav__control--back btn s-cvta" id="to-home-page" href="#">
+                <span class="icon icon--back"></span>
             </a>
-            <a class="nav__title nav__title--link" href="#">
+           <!-- <a class="nav__title nav__title--link" href="#">
                 expenses by date
                 <span class="icon icon--caret s-cvta"></span>
-            </a>
+            </a> -->
+            <select class="dropdown form__input" id="expenses-type">
+                <option data-id="1">EXPENSES BY DATE</option>
+                <option data-id="2">EXPENSES BY CATEGORY</option>
+                <option data-id="3">EXPENSES BY AMOUNT</option>
+            </select>
+
             <a class="nav__control nav__control--chart btn s-cvta" id="chart" href="#">
                 <span class="icon icon--chart"></span>
             </a>
@@ -50,18 +56,18 @@
                 </tr>
                 </thead>
                 <tbody>
-            <!--<tr class="table__row table__row--notification">
-                    <td class="table__data table__data--notification" colspan="4">
-                        <div class="table__notification-title">
-                            notification
-                        </div>
-                        <div class="table__notification-text">
-                            You exceeded limit SHOPPING category
-                        </div>
-                    </td>
-                </tr>  -->
-            {{# _.each(model, function(item, index) { }}
-            {{# if (item.revenue === false) { }}
+                <!--<tr class="table__row table__row--notification">
+                        <td class="table__data table__data--notification" colspan="4">
+                            <div class="table__notification-title">
+                                notification
+                            </div>
+                            <div class="table__notification-text">
+                                You exceeded limit SHOPPING category
+                            </div>
+                        </td>
+                    </tr>  -->
+                {{# _.each(model, function(item, index) { }}
+                {{# if (item.revenue === false) { }}
                 <tr class="table__row">
                     <td class="table__data">
                         {{ item.date.substr(5,5) }}
@@ -78,8 +84,8 @@
                         </button>
                     </td>
                 </tr>
-            {{# } }}
-            {{# }); }}
+                {{# } }}
+                {{# }); }}
 
                 </tbody>
             </table>

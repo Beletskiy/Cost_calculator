@@ -6,7 +6,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
     events: {
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
-        'tap input, select, #back-button': 'hideSuccessMessage',
+        'tap input, select, #to-expenses-page': 'hideSuccessMessage',
         'tap #to-expenses-page': 'toExpensesPage'
     },
 

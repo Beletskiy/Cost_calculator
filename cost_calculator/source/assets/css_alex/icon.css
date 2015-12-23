@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../font/icon/icomoon.ttf') format('truetype');
+}
+
+.icon {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon--add-expenses::before {
+  content: "\e901";
+}
+
+.icon--add-revenue::before {
+  content: "\e902";
+}
+
+.icon--arrow-left::before {
+  content: "\e903";
+}
+
+.icon--arrow-right::before {
+  content: "\e904";
+}
+
+.icon--total-balance::before {
+  content: "\e905";
+}
+
+.icon--total-expenses::before {
+  content: "\e900";
+}
+
+.icon--total-revenue::before {
+  content: "\e906";
+}
+
+.icon--close::before {
+  content: "\e907";
+}
+
+.icon--add::before {
+  content: "\e908";
+}
+
+.icon--chart::before {
+  content: "\e909";
+}
+
+.icon--more::before {
+  content: "\e90a";
+}
+
+.icon--back::before {
+  content: "\e90b";
+}
+
+.icon--caret {
+  border-style: solid;
+  border-width: 7px 3px 0 3px;
+  border-color: white transparent transparent transparent;
+}

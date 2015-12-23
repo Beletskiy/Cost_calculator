@@ -1,7 +1,7 @@
 <div>
     <div class="page">
         <nav class="nav">
-            <a class="nav__control nav__control--back btn s-cvta" id = "to-expenses-page" href="#">
+            <a class="nav__control nav__control--back btn s-cvta" id="to-expenses-page" href="#">
                 <span class="icon icon--back"></span>
             </a>
             <a class="nav__title" href="#">
@@ -10,32 +10,35 @@
         </nav>
 
         <form class="form" id="form-add-cost" action="#">
-                <div class="form__group">
-                    <input class="form__input" type="text" placeholder="select date">
-                    <p class="form__msg"></p>
-                </div>
+            <div class="form__group">
+                <input class="form__input datepicker" id="datetimepicker4" type="text" placeholder="select date"
+                       required>
+
+                <p class="form__msg"></p>
+            </div>
             <div class="form__group">
                 <select class="form__input" id="costs-type" required>
                     <option selected disabled value="">SELECT CATEGORY</option>
                     {{# _.each(model, function(item, index) { }}
                     {{# if (item.revenues === false) { }}
-                    <option data-id = "{{ index }}">{{ item.name }}</option>
+                    <option data-id="{{ index }}">{{ item.name }}</option>
                     {{# } }}
                     {{# }); }}
                 </select>
+
                 <p class="form__msg"></p>
             </div>
-         <!--   <div class="form__group">
-                <input class="form__input" type="text" placeholder="enter category">
-                <p class="form__msg"></p>
-            </div> -->
+
             <div class="form__group">
-                <input class="form__input" type="text" placeholder="amount expense">
+                <input class="form__input" id="sum" type="number" placeholder="amount expense" min="1" max="9999999"
+                       step="0.1" required>
+
                 <p class="form__msg"></p>
             </div>
-            <button class="btn btn--submit" type="submit">
+            <button class="btn btn--submit" id="add-cost" type="submit">
                 add
             </button>
         </form>
+        <p id="success-message">Your cost had been added to history!</p>
     </div>
 </div>

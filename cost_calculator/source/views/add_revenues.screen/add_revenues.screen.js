@@ -4,7 +4,7 @@ RAD.view('add_revenues.screen', RAD.Blanks.View.extend({
     events: {
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
-        'tap input, select, #back-button': 'hideSuccessMessage',
+        'tap input, select, #to-revenues-page': 'hideSuccessMessage',
         'tap #to-revenues-page': 'toRevenuesPage'
     },
 

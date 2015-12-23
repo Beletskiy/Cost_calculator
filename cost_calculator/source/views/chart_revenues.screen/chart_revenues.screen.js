@@ -1,4 +1,4 @@
-RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
+RAD.view('chart_revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/chart_revenues.screen/chart_revenues.screen.html',
     headerInfo: {
@@ -18,9 +18,6 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
-        this.$legend = $(document.createElement('div'));
-        this.$legend.addClass('chart-legend');
-        this.$wrapper = $('.wrapper');
     },
 
     onEndAttach: function () {
@@ -54,8 +51,8 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
 
     drawChart: function () {
         'use strict';
-        var div, span, br,
-            arrOfExpenses = RAD.model('collection.purchases').getArrayOfRevenuesFromCurrentMonth(),
+        var arrOfRevenues = RAD.model('collection.purchases').getArrayOfRevenuesFromCurrentMonth(),
+            categoryModel = RAD.model('collection.categories'),
             data = {
                 series: []
             };
@@ -64,20 +61,15 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
             return a + b;
         };
 
-        this.$legend.empty();
+        this.model = new Backbone.Collection();
 
-        for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
-            if (arrOfExpenses[i].value !== 0) {
-                data.series.push(arrOfExpenses[i].value);
-                div = document.createElement('div');
-                span = document.createElement('span');
-                br = document.createElement('br');
-                div.setAttribute('class', 'square');
-                div.setAttribute('id', 'ct-legend-' + k);
-                span.innerHTML = RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id);
-                this.$legend.append(div);
-                this.$legend.append(span);
-                this.$legend.append(br);
+        for (var i = 0, k = 0; i < arrOfRevenues.length; i++) {
+            if (arrOfRevenues[i].value !== 0) {
+                data.series.push(arrOfRevenues[i].value);
+                this.model.add({
+                    id: k,
+                    category: categoryModel.getCategoryById(arrOfRevenues[i].id)
+                });
                 k++;
             }
         }
@@ -89,7 +81,6 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
         };
 
         new Chartist.Pie('.ct-chart', data, options);
-        this.$wrapper.append(this.$legend);
 
     }
 

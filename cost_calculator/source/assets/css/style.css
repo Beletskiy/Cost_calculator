@@ -1,3 +1,7 @@
+body {
+    background: url(../img/bg2x.png) 0 0/cover no-repeat;
+}
+
 .wrapper {
     padding: 10px 20px;
     width: 100%;
@@ -87,13 +91,13 @@ td:nth-child(3), th:nth-child(3) {
     font-size: 1.3rem;
 }
 
-.ct-chart-landscape {
-    width: 60%;
-    float: right;
+div[view='chart_balance.screen'] .ct-chart {
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-.chart-legend-landscape {
-    margin-top: 30px;
+.chart-legend {
+    padding-left: 20px;
 }
 
 div.square {
@@ -143,9 +147,6 @@ div.square {
     background: #dda458;
 }
 
-.scroll-view {
-    background: url(../cost_calculator/source/assets/img/bg2x.png) 0 0/cover no-repeat;
-}
 
 
 
