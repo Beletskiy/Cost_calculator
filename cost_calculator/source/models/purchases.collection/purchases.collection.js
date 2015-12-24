@@ -21,7 +21,9 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
     sortBySum: function () {
         'use strict';
         this.sortKey = 'sum';
-        this.sort();
+        this.sort({silent:true});
+        this.models = this.models.reverse();
+        this.trigger('reset', this, {});
     },
 
     sortByDate: function () {

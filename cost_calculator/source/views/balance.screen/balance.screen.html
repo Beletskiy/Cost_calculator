@@ -70,7 +70,7 @@
                     </td>
                     {{# if (item.revenue === true) { }}
                     <td class="table__data table__data--3">
-                        {{ item.sum }}
+                        +{{ item.sum }}
                     </td>
                     {{# } else { }}
                     <td class="table__data table__data--3">
@@ -78,7 +78,7 @@
                     </td>
                     {{# } }}
                     <td class="table__data table__data--4">
-                        <button class="table__control btn" type="button">
+                        <button class="table__control btn settings" id="{{ index }}" type="button">
                             <span class="icon icon--more"></span>
                         </button>
                     </td>
@@ -93,21 +93,21 @@
             <div class="menu__overlay s-fa"></div>
             <ul class="menu__list s-fa">
                 <li class="menu__point">
-                    <a class="mark-text mark-text--menu mark-text--plan" href="#">
+                    <a class="mark-text mark-text--menu mark-text--edit" href="#">
                         <span class="mark-text__text">
-                            plan your expenses
+                            edit
                         </span>
                     </a>
                 </li>
                 <li class="menu__point">
-                    <a class="mark-text mark-text--menu mark-text--settings" href="#">
+                    <a class="mark-text mark-text--menu mark-text--remove" id="item-for-remove" href="#">
                         <span class="mark-text__text">
-                            settings
+                            remove
                         </span>
                     </a>
                 </li>
                 <li class="menu__point">
-                    <a class="mark-text mark-text--menu mark-text--cancel" href="#">
+                    <a class="mark-text mark-text--menu mark-text--cancel" id="cancel" href="#">
                         <span class="mark-text__text">
                             cancel
                         </span>
