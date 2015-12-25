@@ -1,5 +1,4 @@
-.mark-text::before {
-  content: "";
+.mark-text__mark {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -29,50 +28,45 @@
   text-transform: uppercase;
 }
 
-.mark-text--plan::before {
+.mark-text--plan .mark-text__mark {
   background: orange;
 }
 
-.mark-text--settings::before {
+.mark-text--settings .mark-text__mark {
   background: blue;
 }
 
-.mark-text--remove::before {
+.mark-text--remove .mark-text__mark {
   background: red;
 }
 
-.mark-text--edit::before {
+.mark-text--edit .mark-text__mark {
   background: green;
 }
 
-.mark-text--cancel::before {
+.mark-text--cancel .mark-text__mark {
   background: grey;
 }
 
 
 /*Expenses by category*/
 
-.mark-text--transport::before {
+.mark-text--transport .mark-text__mark {
   background: yellow;
 }
 
-.mark-text--shopping::before {
+.mark-text--shopping .mark-text__mark {
   background: orange;
 }
 
-.mark-text--petrol::before {
+.mark-text--petrol .mark-text__mark {
   background: red;
 }
 
 
 /*Table some*/
 
-.mark-text--notext {
+.mark-text--notext .mark-text__mark {
   height: 34px;
   width: 34px;
-}
-
-.mark-text--notext::before {
-  width: 100%;
-  height: 100%;
 }
