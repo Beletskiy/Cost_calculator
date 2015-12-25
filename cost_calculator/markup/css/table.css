@@ -6,13 +6,26 @@
   width: 100%;
 }
 
+.table__body {
+  display: block;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
 .table__row {
   border-bottom: 1px solid rgba(255,255,255,0.3);
+  display: table;
+  width: 100%;
 }
 
 .table__row--head,
 .table__row--notification {
   border: none;
+}
+
+.table__body .table__row {
+  display: table;
+  width: 100%;
 }
 
 .table__title,
@@ -80,4 +93,14 @@
   font: 14px "Lato Regular",sans-serif;
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
+}
+
+
+
+/*--== MODIFIERS ==--*/
+
+/*Table some*/
+
+.table--some .table__data--1 {
+  padding: 0;
 }

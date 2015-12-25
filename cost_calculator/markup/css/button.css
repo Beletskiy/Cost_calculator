@@ -6,7 +6,9 @@
 }
 
 .btn-group {
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 
@@ -86,13 +88,17 @@
 /*Home. Add buttons*/
 
 .btn-hold--add {
+  display: -webkit-flex;
   display: flex;
   padding: 0 2px;
 }
 
 .btn--add {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-grow: 1;
   flex-grow: 1;
+  -webkit-align-items: center;
   align-items: center;
   height: 66px;
   border: 2px solid transparent;
@@ -104,6 +110,7 @@
 }
 
 .btn--add .btn__content {
+  -webkit-flex-grow: 1;
   flex-grow: 1;
   font: 13px "Lato Regular", sans-serif;
   color: white;

@@ -3,8 +3,7 @@
 <head>
     <title>Cost Calculator</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="css/cost-calculator.css" rel="stylesheet">
 </head>
 <body>
@@ -19,8 +18,8 @@
         </nav>
 
         <form class="form" action="#">
-            <div class="form__group">
-                <select class="dropdown form__input" name="expenseCategory">
+            <div class="form__group form__group--select">
+                <select class="form__input" name="expenseCategory">
                     <option selected>
                         SELECT CATEGORY
                     </option>
@@ -34,10 +33,9 @@
                         PETROL
                     </option>
                 </select>
-                <p class="form__msg"></p>
             </div>
             <div class="form__group">
-                <input class="form__input" type="text" placeholder="limit amount">
+                <input class="form__input" type="number" placeholder="limit amount">
                 <p class="form__msg"></p>
             </div>
             <div class="form__group">
