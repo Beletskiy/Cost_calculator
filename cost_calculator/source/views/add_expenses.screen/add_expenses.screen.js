@@ -47,9 +47,9 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
             costsType = this.$costsType.val(),
             costsTypeId = this.$('#costs-type option:selected').data('id');
         time = moment(time).format('YYYY-MM-DD');
-
         if (this.$formAddCost[0].checkValidity()) {
             RAD.model('collection.purchases').add({
+                id: _.uniqueId(),
                 date: time,
                 category: costsType,
                 sum: sum,

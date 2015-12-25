@@ -13,12 +13,24 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
         'tap #month-minus': 'previousMonth',
         'tap #month-plus': 'nextMonth',
         'tap #to-home-page': 'toHomePage',
-        'tap #to-add-revenues-page': 'toAddRevenuesPage'
+        'tap #to-add-revenues-page': 'toAddRevenuesPage',
+        'tap .settings': 'showConcreteSettings',
+        'tap #cancel': 'hideSettings',
+        'tap #item-for-remove': 'removeItem'
     },
 
     onInitialize: function () {
         'use strict';
-         this.model = new Backbone.Collection();
+        this.model = new Backbone.Collection();
+        this.listenTo(this.model, 'reset sort', this.render);
+        this.baseCollection = RAD.model('collection.purchases');
+        this.baseCollection.sortByDate();
+        this.listenTo(this.model, 'reset sort', this.render);
+    },
+
+    onEndRender: function () {
+        'use strict';
+        this.$menu = this.$('.menu');
     },
 
     onStartAttach: function () {
@@ -30,11 +42,11 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         var collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
 
-        this.model.reset(collect);
         this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        this.changeModel(this.model);
+        this.model.reset(collect);
+        //this.changeModel(this.model);
     },
 
     showChartRevenues: function () {
@@ -55,11 +67,28 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     toHomePage: function () {
         'use strict';
-       this.application.backToHome();
+        this.application.backToHome();
     },
 
     toAddRevenuesPage: function () {
         'use strict';
         this.application.showAddRevenues();
+    },
+
+    showConcreteSettings: function (e) {
+        'use strict';
+        this.$menu.addClass('menu--open');
+        this.itemForRemove = e.currentTarget.id;
+    },
+
+    hideSettings: function () {
+        'use strict';
+        this.$menu.removeClass('menu--open');
+    },
+
+    removeItem: function () {
+        'use strict';
+        this.baseCollection.remove(this.baseCollection.where({id: this.itemForRemove}));
+        this.init();
     }
 }));

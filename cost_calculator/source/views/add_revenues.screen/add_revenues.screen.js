@@ -47,6 +47,7 @@ RAD.view('add_revenues.screen', RAD.Blanks.View.extend({
         time = moment(time).format('YYYY-MM-DD');
         if (this.$formAddCost[0].checkValidity()) {
             RAD.model('collection.purchases').add({
+                id: _.uniqueId(),
                 date: time,
                 category: costsType,
                 sum: sum,
