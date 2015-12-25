@@ -8,11 +8,6 @@
                 {{ this.headerInfo.sortMethod }}
                 <span class="icon icon--caret s-cvta"></span>
             </a>
-          <!--  <select class="dropdown form__input" id="expenses-type">
-                <option data-id="1">EXPENSES BY DATE</option>
-                <option data-id="2">EXPENSES BY CATEGORY</option>
-                <option data-id="3">EXPENSES BY AMOUNT</option>
-            </select>  -->
 
             <a class="nav__control nav__control--chart btn s-cvta" id="chart" href="#">
                 <span class="icon icon--chart"></span>
@@ -79,7 +74,7 @@
                         {{ item.sum }}
                     </td>
                     <td class="table__data table__data--4">
-                        <button class="table__control btn" type="button">
+                        <button class="table__control btn settings" id="{{ item.id }}" type="button">
                             <span class="icon icon--more"></span>
                         </button>
                     </td>
@@ -95,21 +90,21 @@
             <div class="menu__overlay s-fa"></div>
             <ul class="menu__list s-fa">
                 <li class="menu__point">
-                    <a class="mark-text mark-text--menu mark-text--plan" href="#">
+                    <a class="mark-text mark-text--menu mark-text--edit" href="#">
                         <span class="mark-text__text">
-                            plan your expenses
+                            edit
                         </span>
                     </a>
                 </li>
                 <li class="menu__point">
-                    <a class="mark-text mark-text--menu mark-text--settings" href="#">
+                    <a class="mark-text mark-text--menu mark-text--remove" id="item-for-remove" href="#">
                         <span class="mark-text__text">
-                            settings
+                            remove
                         </span>
                     </a>
                 </li>
                 <li class="menu__point">
-                    <a class="mark-text mark-text--menu mark-text--cancel" href="#">
+                    <a class="mark-text mark-text--menu mark-text--cancel" id="cancel" href="#">
                         <span class="mark-text__text">
                             cancel
                         </span>

@@ -20,6 +20,9 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
     onInitialize: function () {
         'use strict';
         this.model = new Backbone.Collection();
+        this.baseCollection = RAD.model('collection.purchases');
+        this.listenTo(this.model, 'reset sort', this.render);
+        //this.baseCollection.listenTo(this.baseCollection, 'remove', this.render); don't work correctly
     },
 
     onEndRender: function () {
@@ -34,14 +37,12 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
 
     init: function () {
         'use strict';
-        this.collection = RAD.model('collection.purchases').getResultsFromCurrentMonth();
-
-        this.model.reset(this.collection);
-        this.headerInfo.balance = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth() -
-            RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
+        var collect = this.baseCollection.getResultsFromCurrentMonth();
+        this.headerInfo.balance = this.baseCollection.getCommonRevenuesFromCurrentMonth() -
+            this.baseCollection.getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        this.changeModel(this.model);
+        this.model.reset(collect);
     },
 
     showChartBalance: function () {
@@ -63,7 +64,6 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         this.$menu.addClass('menu--open');
         this.itemForRemove = e.currentTarget.id;
-        console.log(this.itemForRemove);
     },
 
     hideSettings: function () {
@@ -73,11 +73,8 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
 
     removeItem: function () {
         'use strict';
-        console.log(this.collection);
-        console.log();
-        this.collection.remove(this.collection.models[this.itemForRemove]);
-        console.log(this.collection);
-        this.render();
+        this.baseCollection.remove(this.baseCollection.where({id: this.itemForRemove}));
+        this.init();
     },
 
     toHomePage: function () {
