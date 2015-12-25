@@ -1,4 +1,4 @@
-RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
+RAD.view('chart_revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/chart_revenues.screen/chart_revenues.screen.html',
     headerInfo: {
@@ -18,22 +18,11 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
-        this.$legend = document.createElement('div');
-        this.$legend.setAttribute('class', 'chart-legend');
     },
 
-    onStartAttach: function () {
+    onEndAttach: function () {
         'use strict';
-        var self = this;
         this.init();
-        $(window).resize(function () {
-            self.drawChart();
-        });
-    },
-
-    onEndDetach: function () {
-        'use strict';
-        $(window).off('resize');
     },
 
     init: function () {
@@ -62,10 +51,8 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
 
     drawChart: function () {
         'use strict';
-        console.log('draw chart');
-        calculateCurrentInnerSizes();
-        var currentInnerHeight = 0, currentInnerWeight = 0, div, span, br,
-            arrOfExpenses = RAD.model('collection.purchases').getArrayOfRevenuesFromCurrentMonth(),
+        var arrOfRevenues = RAD.model('collection.purchases').getArrayOfRevenuesFromCurrentMonth(),
+            categoryModel = RAD.model('collection.categories'),
             data = {
                 series: []
             };
@@ -74,41 +61,27 @@ RAD.view('chart_revenues.screen', RAD.Blanks.View.extend({
             return a + b;
         };
 
-        while (this.$legend.firstChild) {
-            this.$legend.removeChild(this.$legend.firstChild);
-        }
+        this.model = new Backbone.Collection();
 
-        for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
-            if (arrOfExpenses[i].value !== 0) {
-                data.series.push(arrOfExpenses[i].value);
-                div = document.createElement('div');
-                span = document.createElement('span');
-                br = document.createElement('br');
-                div.setAttribute('class', 'square');
-                div.setAttribute('id', 'ct-legend-' + k);
-                span.innerHTML = RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id);
-                this.$legend.appendChild(div);
-                this.$legend.appendChild(span);
-                this.$legend.appendChild(br);
+        for (var i = 0, k = 0; i < arrOfRevenues.length; i++) {
+            if (arrOfRevenues[i].value !== 0) {
+                data.series.push(arrOfRevenues[i].value);
+                this.model.add({
+                    id: k,
+                    category: categoryModel.getCategoryById(arrOfRevenues[i].id)
+                });
                 k++;
             }
         }
 
         var options = {
-            width: currentInnerWeight,
-            height: currentInnerHeight,
             labelInterpolationFnc: function (value) {
                 return Math.round(value / data.series.reduce(sum) * 100) + '%';
             }
         };
 
         new Chartist.Pie('.ct-chart', data, options);
-        $('.wrapper').append(this.$legend);
 
-        function calculateCurrentInnerSizes() {
-            currentInnerHeight = window.innerHeight;
-            currentInnerWeight = window.innerWidth;
-        }
     }
 
 }));

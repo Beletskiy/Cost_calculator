@@ -1,0 +1,24 @@
+.datepicker {
+  position: relative;
+  padding: 12px 55px;
+  text-align: center;
+}
+
+.datepicker__date {
+  font: 16px "Lato Regular", sans-serif;
+  color: #bedddb;
+  text-shadow: 0 0 8px rgba(1,18,20,0.7);
+}
+
+.datepicker__money {
+  font: 22px "Lato Bold", sans-serif;
+  color: white;
+  text-shadow: 0 0 8px rgba(1,18,20,0.7);
+}
+
+
+/*--== MODIFIERS ==--*/
+
+.datepicker--without-money .datepicker__money {
+  display: none;
+}

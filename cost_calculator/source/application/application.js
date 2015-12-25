@@ -127,8 +127,20 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
-    app.backToThePreviousPage = function () {
-        window.history.back();
+    app.showPlanExpenses = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'plan_expenses.screen'
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.showSettings = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'settings.screen'
+        };
+        core.publish('navigation.show', options);
     };
 
     app.displayedDate = {};

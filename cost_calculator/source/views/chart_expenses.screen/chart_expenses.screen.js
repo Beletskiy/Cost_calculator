@@ -1,4 +1,4 @@
-RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
+RAD.view('chart_expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/chart_expenses.screen/chart_expenses.screen.html',
 
@@ -14,31 +14,28 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         'tap #to-expenses-page': 'toExpensesPage'
     },
 
-    $legend: null,
-
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
-        this.$legend = document.createElement('div');
-        this.$legend.setAttribute('class', 'chart-legend'); //todo add jquery
+    },
+
+    onEndRender: function () {
+        'use strict';
+        this.drawChart();
+        //console.log(this.model);
     },
 
     onStartAttach: function () {
         'use strict';
+    },
+
+    onEndAttach: function () {
+        'use strict';
         this.init();
-
-        if (window.screen.width > window.screen.height) {
-            this.$legend.setAttribute('class', 'chart-legend-landscape');
-            $('.ct-chart').addClass('ct-chart-landscape');
-        } else {
-            $('.ct-chart').removeClass('ct-chart-landscape');
-        }
-
     },
 
     onEndDetach: function () {
         'use strict';
-        $(window).off('resize');
     },
 
     init: function () {
@@ -46,8 +43,9 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        this.render();
-        this.drawChart();
+        console.log('this.model ',this.model);
+        this.changeModel(this.model);
+       // this.render();
     },
 
     previousMonth: function () {
@@ -67,10 +65,9 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
 
     drawChart: function () {
         'use strict';
-        //console.log('draw chart');
-        calculateCurrentInnerSizes();
-        var currentInnerHeight = 0, currentInnerWeight = 0, div, span,br,
-            arrOfExpenses = RAD.model('collection.purchases').getArrayOfExpensesFromCurrentMonth(),
+        console.log('draw chart');
+        var arrOfExpenses = RAD.model('collection.purchases').getArrayOfExpensesFromCurrentMonth(),
+            categoryModel = RAD.model('collection.categories'),
             data = {
                 series: []
             };
@@ -79,41 +76,43 @@ RAD.view('chart_expenses.screen', RAD.Blanks.View.extend({
             return a + b;
         };
 
-        while(this.$legend.firstChild) {
-            this.$legend.removeChild(this.$legend.firstChild);
-        }
-
-        for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
-            if (arrOfExpenses[i].value !== 0) {
-                data.series.push(arrOfExpenses[i].value);
-                div = document.createElement('div');
-                span = document.createElement('span');
-                br = document.createElement('br');
-                div.setAttribute('class', 'square');
-                div.setAttribute('id', 'ct-legend-' + k);
-                span.innerHTML = RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id);
-                this.$legend.appendChild(div);
-                this.$legend.appendChild(span);
-                this.$legend.appendChild(br);
-                k++;
-            }
-        }
-
         var options = {
-           // width: currentInnerWeight,
-           // height: currentInnerHeight,
             labelInterpolationFnc: function (value) {
                 return Math.round(value / data.series.reduce(sum) * 100) + '%';
             }
         };
 
-        new Chartist.Pie('.ct-chart', data, options);
-        $('.wrapper').append(this.$legend);
+        this.model = new Backbone.Collection();
 
-        function calculateCurrentInnerSizes() {
-            currentInnerHeight = window.innerHeight;
-            currentInnerWeight = window.innerWidth;
+        for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
+            if (arrOfExpenses[i].value !== 0) {
+                data.series.push(arrOfExpenses[i].value);
+                this.model.add({id: k, category: categoryModel.getCategoryById(arrOfExpenses[i].id)});
+                k++;
+            }
         }
+
+        new Chartist.Pie('.ct-chart', data, options);
+
+     // var chart =  new Chartist.Pie('.ct-chart', data, options);
+        //console.log(chart);
+
+       // calculateDataForChartAndLegend(this, function(){
+       //     new Chartist.Pie('.ct-chart', data, options);
+       //     console.log('data', data);
+       // });
+
+
+        //function calculateDataForChartAndLegend (self, callback) {
+        //    for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
+        //        if (arrOfExpenses[i].value !== 0) {
+        //            data.series.push(arrOfExpenses[i].value);
+        //            self.model.add({id: k, category: RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id)});
+        //            k++;
+        //        }
+        //    }
+        //    callback();
+        //}
     }
 
 }));

@@ -5,7 +5,8 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
     headerInfo: {
         month: null,
         year: null,
-        expenses: null
+        expenses: null,
+        sortMethod: null
     },
 
     events: {
@@ -14,12 +15,20 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         'tap #month-plus': 'nextMonth',
         'tap #to-home-page': 'toHomePage',
         'tap #to-add-expenses-page': 'toAddExpensesPage',
-        'change #expenses-type': 'changeExpenses'
+        'tap #expenses-type': 'sortCollection'
     },
+
+   EXPENSES_BY_DATE: 'expenses by date',
+   EXPENSES_BY_CATEGORY: 'expenses by category',
+   EXPENSES_BY_AMOUNT: 'expenses by amount',
 
     onInitialize: function () {
         'use strict';
         this.model = new Backbone.Collection();
+        this.listenTo(this.model, 'reset sort', this.render);
+        RAD.model('collection.purchases').sortByDate();
+        this.headerInfo.sortMethod = this.EXPENSES_BY_DATE;
+        this.tapNumber = 1;
     },
 
     onStartAttach: function () {
@@ -31,11 +40,10 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         var collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
 
-        this.model.reset(collect);
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        this.changeModel(this.model);
+        this.model.reset(collect);
     },
 
     showChartExpenses: function () {
@@ -64,9 +72,40 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         this.application.showAddExpenses();
     },
 
-    changeExpenses: function () {
+    calculateTapNumber: function () {
         'use strict';
-        console.log('onchange');
-        console.log(this.$('#expenses-type option:selected').data('id'));
+        this.tapNumber++;
+            if (this.tapNumber > 3) {
+                this.tapNumber = 1;
+            }
+        return this.tapNumber;
+    },
+
+    sortCollection: function () {
+        'use strict';
+        var collect,
+            tapNumber;
+
+        tapNumber = this.calculateTapNumber();
+
+        if (tapNumber === 2) {
+            RAD.model('collection.purchases').sortByCategory();
+            collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
+            this.headerInfo.sortMethod = this.EXPENSES_BY_CATEGORY;
+            this.model.reset(collect);
+        }
+        if (tapNumber === 3) {
+            RAD.model('collection.purchases').sortBySum();
+            collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
+            this.headerInfo.sortMethod = this.EXPENSES_BY_AMOUNT;
+            this.model.reset(collect);
+        }
+        if (tapNumber === 1) {
+            RAD.model('collection.purchases').sortByDate();
+            collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
+            this.headerInfo.sortMethod = this.EXPENSES_BY_DATE;
+            this.model.reset(collect);
+        }
+
     }
 }));

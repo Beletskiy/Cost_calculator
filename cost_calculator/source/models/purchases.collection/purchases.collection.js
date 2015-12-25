@@ -4,11 +4,32 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
         var purchases = JSON.parse(localStorage.getItem('purchases'));
         this.add(purchases);
         this.on('add remove', this.setToLocalStorage);
+        this.sortKey = 'date';
     },
 
     comparator: function (collection) {
         'use strict';
-        return ( collection.get('date') );
+        return ( collection.get(this.sortKey) );
+    },
+
+    sortByCategory: function() {
+        'use strict';
+        this.sortKey = 'category';
+        this.sort();
+    },
+
+    sortBySum: function () {
+        'use strict';
+        this.sortKey = 'sum';
+        this.sort({silent:true});
+        this.models = this.models.reverse();
+        this.trigger('reset', this, {});
+    },
+
+    sortByDate: function () {
+        'use strict';
+        this.sortKey = 'date';
+        this.sort();
     },
 
     setToLocalStorage: function () {
@@ -134,8 +155,6 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
             }
         }
         return revenuesArr;
-    },
-
-
+    }
 
 }), true);

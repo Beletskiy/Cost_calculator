@@ -1,39 +1,124 @@
 <div>
-    <div class="wrapper">
-        <h5><span class = "pull-left" id = "to-home-page"><--</span> <span class="pull-right" id="chart">chart</span></h5>
+    <div class="page">
+        <nav class="nav nav--expenses-by-date">
+            <a class="nav__control nav__control--back btn s-cvta" id="to-home-page" href="#">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title nav__title--link" href="#" id="expenses-type">
+                {{ this.headerInfo.sortMethod }}
+                <span class="icon icon--caret s-cvta"></span>
+            </a>
+          <!--  <select class="dropdown form__input" id="expenses-type">
+                <option data-id="1">EXPENSES BY DATE</option>
+                <option data-id="2">EXPENSES BY CATEGORY</option>
+                <option data-id="3">EXPENSES BY AMOUNT</option>
+            </select>  -->
 
-        <select class="form-control" id="expenses-type">
-            <option selected data-id = "1">EXPENSES BY DATE</option>
-            <option data-id = "2">EXPENSES BY CATEGORY</option>
-            <option data-id = "3">EXPENSES BY AMOUNT</option>
-        </select>
+            <a class="nav__control nav__control--chart btn s-cvta" id="chart" href="#">
+                <span class="icon icon--chart"></span>
+            </a>
+            <button class="nav__control nav__control--more btn s-cvta" type="button">
+                <span class="icon icon--more"></span>
+            </button>
+        </nav>
 
-        <h5><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{ this.headerInfo.month }},
-            {{ this.headerInfo.year }}</h5>
-        <h5><b>{{ this.headerInfo.expenses }}</b></h5>
+        <div class="datepicker">
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta" id="month-minus">
+                <span class="icon icon--arrow-left"></span>
+            </button>
+            <div>
+                <div class="datepicker__date">
+                    {{ this.headerInfo.month }}, {{ this.headerInfo.year }}
+                </div>
+                <div class="datepicker__money">
+                    {{ this.headerInfo.expenses }}
+                </div>
+            </div>
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-right s-cvta" id="month-plus">
+                <span class="icon icon--arrow-right"></span>
+            </button>
+        </div>
 
-        <table>
-            <tr>
-                <th>DATE</th>
-                <th>CATEGORY</th>
-                <th>AMOUNT</th>
-            </tr>
-        </table>
-        <ul>
-            {{# _.each(model, function(item, index) { }}
-            {{# if (item.revenue === false) { }}
-            <li>
-                <table>
-                    <tr>
-                        <td> {{ item.date.substr(5,5) }}</td>
-                        <td> {{ item.category }}</td>
-                        <td> {{ item.sum }}</td>
-                    </tr>
-                </table>
-            </li>
-            {{# } }}
-            {{# }); }}
-        </ul>
-        <h5><span class="" id="to-add-expenses-page">add expenses</span></h5>
+        <div class="table-hold">
+            <table class="table">
+                <thead>
+                <tr class="table__row table__row--head">
+                    <th class="table__title table__title--1">
+                        date
+                    </th>
+                    <th class="table__title">
+                        category
+                    </th>
+                    <th class="table__title table__title--3">
+                        amount
+                    </th>
+                    <th class="table__title"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr class="table__row table__row--notification">
+                        <td class="table__data table__data--notification" colspan="4">
+                            <div class="table__notification-title">
+                                notification
+                            </div>
+                            <div class="table__notification-text">
+                                You exceeded limit SHOPPING category
+                            </div>
+                        </td>
+                    </tr>  -->
+                {{# _.each(model, function(item, index) { }}
+                {{# if (item.revenue === false) { }}
+                <tr class="table__row">
+                    <td class="table__data">
+                        {{ item.date.substr(5,5) }}
+                    </td>
+                    <td class="table__data">
+                        {{ item.category }}
+                    </td>
+                    <td class="table__data table__data--3">
+                        {{ item.sum }}
+                    </td>
+                    <td class="table__data table__data--4">
+                        <button class="table__control btn" type="button">
+                            <span class="icon icon--more"></span>
+                        </button>
+                    </td>
+                </tr>
+                {{# } }}
+                {{# }); }}
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="menu"> <!--Add class "menu--open" to open menu-->
+            <div class="menu__overlay s-fa"></div>
+            <ul class="menu__list s-fa">
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--plan" href="#">
+                        <span class="mark-text__text">
+                            plan your expenses
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--settings" href="#">
+                        <span class="mark-text__text">
+                            settings
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--cancel" href="#">
+                        <span class="mark-text__text">
+                            cancel
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
+<a class="btn btn--round" id="to-add-expenses-page" href="#">
+    <span class="icon icon--add s-cta"></span>
+</a>

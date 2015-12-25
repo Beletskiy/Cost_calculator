@@ -1,0 +1,55 @@
+<div>
+    <div class="page">
+        <nav class="nav nav--expenses-by-category">
+            <a class="nav__control nav__control--back btn s-cvta" id="to-home-page" href="#">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title" href="#">
+                settings
+            </a>
+        </nav>
+
+        <form class="form" action="#">
+            <h2 class="form__title">
+                reporting period
+            </h2>
+            <div class="form__group">
+                <div class="btn-group">
+                    <input id="repPer1" class="btn-group__switch btn-group__switch--1" type="radio" name="repPer" checked>
+                    <input id="repPer2" class="btn-group__switch btn-group__switch--2" type="radio" name="repPer">
+                    <input id="repPer3" class="btn-group__switch btn-group__switch--3" type="radio" name="repPer">
+                    <label class="btn-group__btn btn btn-group__btn--1of2 btn-group__btn--1" for="repPer1">
+                        month
+                    </label>
+                    <label class="btn-group__btn btn btn-group__btn--1of2 btn-group__btn--2" for="repPer2">
+                        quarter
+                    </label>
+                    <label class="btn-group__btn btn btn-group__btn--1of2 btn-group__btn--3" for="repPer3">
+                        year
+                    </label>
+                </div>
+            </div>
+            <h2 class="form__title">
+                notifications
+            </h2>
+            <div class="form__group form__group--notifications">
+                <label class="form__label">
+                    Limit is exceeded
+                </label>
+                <div class="btn-group">
+                    <input id="limitExceeded" class="btn-group__switch btn-group__switch--4" type="checkbox">
+                    <label class="btn-group__btn btn btn-group__btn--slide" for="limitExceeded"></label>
+                </div>
+            </div>
+            <div class="form__group form__group--notifications">
+                <label class="form__label">
+                    Saved money
+                </label>
+                <div class="btn-group">
+                    <input id="savedMoney" class="btn-group__switch btn-group__switch--4" type="checkbox">
+                    <label class="btn-group__btn btn btn-group__btn--slide" for="savedMoney"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

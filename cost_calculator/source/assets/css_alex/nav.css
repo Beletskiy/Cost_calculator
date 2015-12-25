@@ -1,0 +1,66 @@
+.nav {
+  padding: 10px 60px;
+  position: relative;
+  text-align: center;
+}
+
+.nav__control--back {
+  left: 10px;
+}
+
+.nav__control--chart {
+  right: 10px;
+}
+
+.nav__control--more {
+  right: 0;
+}
+
+.nav__control .icon {
+  font-size: 30px;
+  color: white;
+}
+
+.nav__title {
+  display: inline-block;
+  font: 16px "Lato Regular", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.nav__title .icon {
+  right: 0;
+}
+
+.nav__title--link {
+  position: relative;
+  padding-right: 15px;
+  pointer-events: auto;
+}
+
+
+
+/*--== MODIFIERS ==--*/
+
+/*Expenses by date, by category*/
+
+.nav--expenses-by-date,
+.nav--expenses-by-category{
+  padding: 10px 70px;
+}
+
+.nav--expenses-by-date .nav__control--chart,
+.nav--expenses-by-category .nav__control--chart {
+  right: 40px;
+}
+
+
+/*Expenses by category*/
+
+@media (max-width: 360px) {
+  .nav--expenses-by-category .nav__title {
+    width: 105px;
+  }
+}

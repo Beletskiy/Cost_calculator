@@ -63,7 +63,7 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
     drawChart: function () {
         'use strict';
         new Chartist.Bar('.ct-chart', {
-            labels: ['expanses', 'revenue'],
+            labels: ['expanses', 'revenues'],
             series: [this.currentExpenses, this.currentRevenues]
         }, {
             distributeSeries: true,

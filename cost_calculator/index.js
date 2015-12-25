@@ -28,6 +28,10 @@
 
         'source/views/balance.screen/balance.screen.js',
 
+        'source/views/plan_expenses.screen/plan_expenses.screen.js',
+
+        'source/views/settings.screen/settings.screen.js',
+
         'source/application/application.js'
     ];
     // #script_end#

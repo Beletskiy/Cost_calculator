@@ -6,7 +6,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
     events: {
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
-        'tap input, select, #back-button': 'hideSuccessMessage',
+        'tap input, select, #to-expenses-page': 'hideSuccessMessage',
         'tap #to-expenses-page': 'toExpensesPage'
     },
 
@@ -43,7 +43,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
         'use strict';
         e.preventDefault();
         var time = this.$dateChoose.val(),
-            sum = this.$sum.val(),
+            sum = Number(this.$sum.val()),
             costsType = this.$costsType.val(),
             costsTypeId = this.$('#costs-type option:selected').data('id');
         time = moment(time).format('YYYY-MM-DD');

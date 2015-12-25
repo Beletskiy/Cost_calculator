@@ -1,43 +1,122 @@
 <div>
-    <div class="wrapper">
-        <h5 id="date"><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{
-            this.headerInfo.month }},
-            {{ this.headerInfo.year }}</h5>
+    <div class="page">
+        <div class="datepicker datepicker--without-money">
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta">
+                <span class="icon icon--arrow-left" id="month-minus"></span>
+            </button>
+            <div id = "date">
+                <div class="datepicker__date">
+                    {{ this.headerInfo.month }}, {{ this.headerInfo.year }}
+                </div>
+                <div class="datepicker__money">
+                    1,234,000.00
+                </div>
+            </div>
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-right s-cvta">
+                <span class="icon icon--arrow-right" id="month-plus"></span>
+            </button>
+        </div>
 
-        <div class="total" id="total-balance">
-            <div class="wrapper-total">
-                <p class="total-header">TOTAL-BALANCE</p>
-
-                <p class="total-sum">{{ this.headerInfo.revenues - this.headerInfo.expenses }}</p>
-
-                <p class="previous-month">
-                    <span class="previous-sum pull-right">
-                        {{ this.headerInfo.revenuesDiff - this.headerInfo.expensesDiff }}
-                    </span>Previous month</p>
+        <div class="tiles">
+            <div class="tile tile--home tile--balance" id="total-balance">
+                <div class="tile__content">
+                    <h2 class="tile__name">
+                        <span class="icon icon--total-balance"></span>
+                        total balance
+                    </h2>
+                    <p class="tile__value">
+                        {{ this.headerInfo.revenues - this.headerInfo.expenses }}
+                    </p>
+                    <p class="tile__diff">
+                        previous month
+                        <span class="tile__diff-number">
+                           {{ this.headerInfo.revenuesDiff - this.headerInfo.expensesDiff }}
+                        </span>
+                    </p>
+                </div>
+                <a class="s-fa"></a>
+            </div>
+            <div class="tile tile--home tile--revenue" id="total-revenues">
+                <div class="tile__content">
+                    <h2 class="tile__name">
+                        <span class="icon icon--total-revenue"></span>
+                        total revenue
+                    </h2>
+                    <p class="tile__value">
+                        {{ this.headerInfo.revenues }}
+                    </p>
+                    <p class="tile__diff">
+                        previous month
+                        <span class="tile__diff-number">
+                           {{ this.headerInfo.revenuesDiff }}
+                        </span>
+                    </p>
+                </div>
+                <a class="s-fa" href="#"></a>
+            </div>
+            <div class="tile tile--home tile--expenses" id="total-expenses">
+                <div class="tile__content">
+                    <h2 class="tile__name">
+                        <span class="icon icon--total-expenses"></span>
+                        total expenses
+                    </h2>
+                    <p class="tile__value">
+                        {{ this.headerInfo.expenses }}
+                    </p>
+                    <p class="tile__diff">
+                        previous month
+                        <span class="tile__diff-number">
+                            {{ this.headerInfo.expensesDiff }}
+                        </span>
+                    </p>
+                </div>
+                <a class="s-fa" ></a>
+                <button class="tile__control btn" type="button">
+                    <span class="icon icon--more" id="settings"></span>
+                </button>
             </div>
         </div>
-        <div class="total" id="total-revenues">
-            <div class="wrapper-total">
-                <p class="total-header">TOTAL-REVENUE</p>
 
-                <p class="total-sum">{{ this.headerInfo.revenues }}</p>
-
-                <p class="previous-month"><span
-                        class="previous-sum pull-right">{{ this.headerInfo.revenuesDiff }}</span>Previous month</p>
-            </div>
+        <div class="btn-hold btn-hold--add">
+            <a class="btn btn--add btn--add-expenses" id="add-expenses">
+                <div class="btn__content">
+                    <span class="icon icon--add-expenses"></span>
+                    add expenses
+                </div>
+            </a>
+            <a class="btn btn--add btn--add-revenue" id="add-revenues" href="#">
+                <div class="btn__content">
+                    <span class="icon icon--add-revenue"></span>
+                    add revenue
+                </div>
+            </a>
         </div>
-        <div class="total" id="total-expenses">
-            <div class="wrapper-total">
-                <p class="total-header">TOTAL-EXPENSES</p>
 
-                <p class="total-sum"> {{ this.headerInfo.expenses }}</p>
-
-                <p class="previous-month"><span
-                        class="previous-sum pull-right">{{ this.headerInfo.expensesDiff }}</span>Previous month</p>
-            </div>
+        <div class="menu"> <!--Add class "menu--open" to open menu-->
+            <div class="menu__overlay s-fa"></div>
+            <ul class="menu__list s-fa">
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--plan" id="plan-expenses" href="#">
+                        <span class="mark-text__text">
+                            plan your expenses
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--settings" id="to-settings" href="#">
+                        <span class="mark-text__text">
+                            settings
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--cancel" id="cancel" href="#">
+                        <span class="mark-text__text">
+                            cancel
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <p class="bottom-total"><span class="pull-left" id="add-expenses">Add expenses</span>
-            <span class="pull-right" id="add-revenues">Add revenues</span>
-        </p>
     </div>
 </div>

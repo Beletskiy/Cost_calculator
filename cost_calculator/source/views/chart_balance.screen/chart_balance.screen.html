@@ -1,9 +1,37 @@
 <div>
-    <div class="wrapper">
-        <h5><span class = "pull-left" id = "to-balance-page"><--</span>TOTAL BALANCE CHART</h5>
-        <h5><span class="pull-left" id="month-minus"><</span><span class="pull-right" id="month-plus">></span>{{ this.headerInfo.month }},
-            {{ this.headerInfo.year }}</h5>
-        <h5><b>{{ this.headerInfo.balance }}</b></h5>
+    <div class="page">
+        <nav class="nav nav--expenses-by-date">
+            <a class="nav__control nav__control--back btn s-cvta" id="to-balance-page" href="#">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title nav__title--link" href="#">
+                total balance chart
+              <!--  <span class="icon icon--caret s-cvta"></span> -->
+            </a>
+
+            <button class="nav__control nav__control--more btn s-cvta" type="button">
+                <span class="icon icon--more"></span>
+            </button>
+        </nav>
+
+        <div class="datepicker">
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta" id="month-minus">
+                <span class="icon icon--arrow-left"></span>
+            </button>
+            <div>
+                <div class="datepicker__date">
+                    {{ this.headerInfo.month }}, {{ this.headerInfo.year }}
+                </div>
+                <div class="datepicker__money">
+                    {{ this.headerInfo.balance }}
+                </div>
+            </div>
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-right s-cvta" id="month-plus">
+                <span class="icon icon--arrow-right"></span>
+            </button>
+        </div>
+
         <div class="ct-chart"></div>
+
     </div>
 </div>

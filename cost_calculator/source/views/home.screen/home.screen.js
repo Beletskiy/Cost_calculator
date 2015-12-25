@@ -1,14 +1,18 @@
-
 RAD.view('home.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/home.screen/home.screen.html',
 
     events: {
-        'tap #add-expenses, #total-expenses, #add-revenues, #total-revenues, #total-balance': 'onButtonClick',
+        'tap #add-expenses, #total-expenses, #add-revenues, #total-revenues, #total-balance, #plan-expenses, #to-settings':
+            'onButtonClick',
         'tap #month-minus': 'previousMonth',
         'tap #month-plus': 'nextMonth',
+        'tap #settings': 'showSettings',
+        'tap #cancel': 'hideSettings',
         'fling #date': 'swipe'
     },
+
+    $menu: null,
 
     headerInfo: {
         month: null,
@@ -30,6 +34,11 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
     onStartAttach: function () {
         'use strict';
         this.init();
+    },
+
+    onEndRender: function () {
+        'use strict';
+        this.$menu = this.$('.menu');
     },
 
     init: function () {
@@ -69,6 +78,12 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
             case 'total-balance':
                 this.application.showBalance();
                 break;
+            case 'plan-expenses':
+                this.application.showPlanExpenses();
+                break;
+            case 'to-settings':
+                this.application.showSettings();
+                break;
         }
     },
 
@@ -80,6 +95,17 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
     nextMonth: function () {
         'use strict';
         this.application.changeMonth(1, this.init.bind(this));
+    },
+
+    showSettings: function (e) {
+        'use strict';
+        e.stopPropagation();
+        this.$menu.addClass('menu--open');
+    },
+
+    hideSettings: function (e) {
+        'use strict';
+        this.$menu.removeClass('menu--open');
     },
 
     swipe: function (e) {

@@ -1,0 +1,41 @@
+.menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.menu--open {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.menu__overlay {
+  background: rgba(0,0,0,0.8);
+}
+
+.menu__list {
+  top: auto;
+  padding: 20px;
+  background: #1D5953;
+  -webkit-transform: -webkit-translateY(100%);
+  transform: translateY(100%);
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.menu--open .menu__list {
+  -webkit-transform: -webkit-translateY(0);
+  transform: translateY(0);
+}
+
+.menu__point + .menu__point {
+  margin-top: 25px;
+}
+
+
+/*--== MODIFIERS ==--*/

@@ -1,0 +1,232 @@
+.tiles {
+  padding: 8px 12px;
+  overflow-y: auto;
+}
+
+.tile {
+  margin: 8px 0;
+  position: relative;
+  border-radius: 2px;
+}
+
+.tile__content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 15px 15px 30px;
+}
+
+.tile__name .icon {
+  margin-right: 6px;
+  vertical-align: -4px;
+}
+
+.tile__value {
+  margin: 5px 0;
+  font-family: "Lato Bold", sans-serif;
+  color: white;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tile__diff {
+  font: 14px "Lato Regular", sans-serif;
+  text-transform: capitalize;
+  text-align: right;
+}
+
+.tile__diff-number {
+  margin-left: 10px;
+  font: 14px "Lato Bold", sans-serif;
+}
+
+.tile__control {
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  padding: 0;
+}
+
+.tile__control .icon {
+  font-size: 30px;
+  color: white;
+  text-shadow: 0 0 16px rgba(76,64,0,0.77);
+}
+
+.tile__label {
+  padding-right: 20px;
+  font: 12px "Lato Regular", sans-serif;
+  text-transform: uppercase;
+  color: white;
+}
+
+.tile__limit {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.tile__unit {
+  display: block;
+  font: 12px "Lato Regular", sans-serif;
+  color: white;
+}
+
+
+
+/*--== MODIFIERS ==--*/
+
+/*Home.*/
+
+.tile--home .tile__content {
+  height: 128px;
+}
+
+.tile--home .tile__name {
+  padding-right: 25px;
+  font: 12px "Lato Black", sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+
+/*Home. Tile balance*/
+
+.tile--balance {
+  background: #2ca69d;
+  box-shadow: 0 0 16px rgba(0,44,75,0.8), inset 0 0 1px #42b8a9;
+}
+
+.tile--balance .tile__content {
+  height: 144px;
+}
+
+.tile--balance .tile__name {
+  color: #a6fff4;
+}
+
+.tile--balance .tile__value {
+  font-size: 36px;
+  text-shadow: 0 0 16px rgba(7,100,93,0.49);
+}
+
+.tile--balance .icon--total-balance {
+  font-size: 24px;
+}
+
+.tile--balance .tile__diff {
+  color: #115c54;
+}
+
+.tile--balance .tile__diff-number {
+  color: #0b5047;
+}
+
+
+/*Home. Tile revenue*/
+
+.tile--revenue {
+  background: #3cb980;
+  box-shadow: 0 0 16px rgba(0,55,34,0.8), inset 0 0 1px #4dde9c;
+}
+
+.tile--revenue .tile__name {
+  color: #8bffca;
+}
+
+.tile--revenue .tile__value {
+  font-size: 32px;
+  text-shadow: 0 0 16px rgba(7,117,43,0.49);
+}
+
+.tile--revenue .icon--total-revenue {
+  font-size: 20px;
+}
+
+.tile--revenue .tile__diff {
+  color: #005e3e;
+}
+
+
+/*Home. Tile expenses*/
+
+.tile--expenses {
+  background: #c5b24c;
+  box-shadow: 0 0 16px rgba(80,59,1,0.8), inset 0 0 1px #e0cb5a;
+}
+
+.tile--expenses .tile__name {
+  color: #ffef9a;
+}
+
+.tile--expenses .tile__value {
+  font-size: 32px;
+  text-shadow: 0 0 16px rgba(115,92,1,0.52);
+}
+
+.tile--expenses .icon--total-expenses {
+  font-size: 20px;
+}
+
+.tile--expenses .tile__diff {
+  color: #695a11;
+}
+
+.tile--expenses .tile__diff-number {
+  color: #695911;
+}
+
+
+/*Plan your expenses*/
+
+.tile--plan .tile__content {
+  justify-content: flex-start;
+  height: 100px;
+  padding: 15px 40px 15px 15px;
+}
+
+.tile--plan .tile__name {
+  font: 20px "Lato Regular", sans-serif;
+  text-transform: capitalize;
+  color: white;
+}
+
+.tile--plan .tile__value {
+  margin: 0;
+  font: 16px "Lato Bold", sans-serif;
+  text-align: right;
+  color: white;
+}
+
+
+/*Plan your expenses. Total limit.*/
+
+.tile--total-limit {
+  background: #2ca69d; /*TODO: clarify*/
+  box-shadow: 0 0 16px rgba(0,44,75,0.8), inset 0 0 1px #42b8a9; /*TODO: clarify*/
+}
+
+.tile--total-limit .tile__content {
+  height: 80px;
+}
+
+
+/*Plan your expenses. Total shopping.*/
+
+.tile--total-shopping {
+  background: #3cb980; /*TODO: clarify*/
+  box-shadow: 0 0 16px rgba(0,55,34,0.8), inset 0 0 1px #4dde9c; /*TODO: clarify*/
+}
+
+
+/*Plan your expenses. Total petrol.*/
+
+.tile--total-petrol {
+  background: #c5b24c; /*TODO: clarify*/
+  box-shadow: 0 0 16px rgba(80,59,1,0.8), inset 0 0 1px #e0cb5a; /*TODO: clarify*/
+}
