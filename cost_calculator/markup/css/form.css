@@ -20,6 +20,7 @@
 
 .form__input {
   box-sizing: border-box;
+  height: 40px;
   width: 100%;
   padding: 10px 20px;
   border: none;
@@ -51,9 +52,37 @@
 /*Settings*/
 
 .form__group--notifications {
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
   align-items: center;
   padding: 10px 5px 10px 20px;
   margin-bottom: 4px;
+}
+
+
+/*Limit by category*/
+
+.form__group--select {
+  position: relative;
+}
+
+.form__group--select::before {
+  content: "";
+  position: absolute;
+  border-style: solid solid none solid;
+  border-width: 6px;
+  border-color: white transparent transparent transparent;
+  right: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.form__group--select .form__input {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 40px;
 }

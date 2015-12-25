@@ -63,3 +63,16 @@
 .mark-text--petrol::before {
   background: red;
 }
+
+
+/*Table some*/
+
+.mark-text--notext {
+  height: 34px;
+  width: 34px;
+}
+
+.mark-text--notext::before {
+  width: 100%;
+  height: 100%;
+}

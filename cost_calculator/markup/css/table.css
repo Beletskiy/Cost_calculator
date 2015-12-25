@@ -81,3 +81,13 @@
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
 }
+
+
+
+/*--== MODIFIERS ==--*/
+
+/*Table some*/
+
+.table--some .table__data--1 {
+  padding: 0;
+}
