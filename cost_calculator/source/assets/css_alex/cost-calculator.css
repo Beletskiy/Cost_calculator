@@ -1,4 +1,4 @@
-@import url(reset.css);
+/*@import url(reset.css); */
 @import url(font.css);
 @import url(icon.css);
 @import url(global.css);
@@ -11,6 +11,5 @@
 @import url(form.css);
 @import url(menu.css);
 @import url(mark-text.css);
-@import url(dropdown.css);
 
 @import url(helper.css);

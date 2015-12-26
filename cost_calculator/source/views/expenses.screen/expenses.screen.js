@@ -1,4 +1,4 @@
-RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
+RAD.view('expenses.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/expenses.screen/expenses.screen.html',
 
@@ -17,7 +17,7 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
         'tap #to-add-expenses-page': 'toAddExpensesPage',
         'tap #expenses-type': 'sortCollection',
         'tap .settings': 'showConcreteSettings',
-        'tap #cancel': 'hideSettings',
+        'tap #cancel, .menu__overlay': 'hideSettings',
         'tap #item-for-remove': 'removeItem'
     },
 
@@ -43,16 +43,17 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     onStartAttach: function () {
         'use strict';
-        this.init();
+        this.loadData();
     },
 
-    init: function () {
+    loadData: function () {
         'use strict';
-        var collect = this.baseCollection.getResultsFromCurrentMonth();
+        var collect = this.baseCollection.getResultsFromCurrentMonth(),
+            displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
 
         this.headerInfo.expenses = this.baseCollection.getCommonExpensesFromCurrentMonth();
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         this.model.reset(collect);
     },
 
@@ -64,12 +65,12 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.loadData.bind(this));
     },
 
     toHomePage: function () {
@@ -79,7 +80,7 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     toAddExpensesPage: function () {
         'use strict';
-        this.application.showAddExpenses();
+        this.application.showAddExpenses(this.viewID);
     },
 
     calculateTapNumber: function () {
@@ -105,7 +106,7 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
     removeItem: function () {
         'use strict';
         this.baseCollection.remove(this.baseCollection.where({id: this.itemForRemove}));
-        this.init();
+        this.loadData();
     },
 
     sortCollection: function () {
@@ -133,6 +134,5 @@ RAD.view('expenses.screen', RAD.Blanks.ScrollableView.extend({
             this.headerInfo.sortMethod = this.EXPENSES_BY_DATE;
             this.model.reset(collect);
         }
-
     }
 }));

@@ -21,41 +21,43 @@ RAD.view('chart_expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     onEndRender: function () {
         'use strict';
-        this.drawChart();
+       // this.drawChart();
         //console.log(this.model);
     },
 
     onStartAttach: function () {
         'use strict';
+        this.loadData();// нарисовать график и легенду
     },
 
     onEndAttach: function () {
         'use strict';
-        this.init();
+        this.drawChart();
+     //   this.init();вызываем метод получения новых данных и сетим их в модель.
     },
 
     onEndDetach: function () {
         'use strict';
     },
 
-    init: function () {
+    loadData: function () {
         'use strict';
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.month = this.application.displayedDate.format('MMMM');
         this.headerInfo.year = this.application.displayedDate.format('YYYY');
         console.log('this.model ',this.model);
-        this.changeModel(this.model);
-       // this.render();
+        //this.changeModel(this.model);
+        this.render();
     },
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        this.application.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        this.application.changeMonth(1, this.loadData.bind(this));
     },
 
     toExpensesPage: function () {

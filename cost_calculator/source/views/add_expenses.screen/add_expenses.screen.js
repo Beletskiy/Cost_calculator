@@ -7,7 +7,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
         'tap input, select, #to-expenses-page': 'hideSuccessMessage',
-        'tap #to-expenses-page': 'toExpensesPage'
+        'tap #to-previous-page': 'toPreviousPage'
     },
 
     model: RAD.model('collection.categories'),
@@ -21,6 +21,11 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
+    },
+
+    onNewExtras: function (previousPage) {
+        'use strict';
+        this.previousPage = previousPage;
     },
 
     onEndRender: function () {
@@ -72,9 +77,9 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
         this.$successMessage.hide();
     },
 
-    toExpensesPage: function () {
+    toPreviousPage: function () {
         'use strict';
-        this.application.backToExpenses();
+        this.application.backToPreviousPage(this.previousPage);
     }
 
 }));

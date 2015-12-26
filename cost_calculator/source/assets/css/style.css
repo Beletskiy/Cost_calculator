@@ -2,16 +2,23 @@ body {
     background: url(../img/bg2x.png) 0 0/cover no-repeat;
 }
 
-.wrapper {
-    padding: 10px 20px;
-    width: 100%;
-}
-.wrapper-total {
-    margin: 30px 15px 15px 30px;
+hr {
+    height: 1px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-h5 {
-    text-align: center;
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+input, select {
+    outline: none;
 }
 
 .total {
@@ -21,21 +28,25 @@ h5 {
     background-color: #2aabd2;
     border-radius: 3px;
 }
+
 p.total-header {
     text-align: center;
     padding-top: 20px;
     letter-spacing: 5px;
     font-size: 12px;
 }
+
 p.total-sum {
     font-size: 28px;
     letter-spacing: 2px;
 }
+
 p.previous-month {
     text-align: center;
     font-size: 12px;
     padding-left: 40px;
 }
+
 p.bottom-total {
     margin-top: 20px;
 }
@@ -63,25 +74,9 @@ p.bottom-total {
     font-size: 16px;
 }
 
-/*table {
-    width: 100%;
+.dropdown-menu {
+    font: 16px "Lato Regular", sans-serif;
 }
-
-td:first-child, th:first-child {
-    float: left;
-    width: 20%;
-}
-
-td:nth-child(2), th:nth-child(2) {
-    float: left;
-    width: 30%;
-}
-
-td:nth-child(3), th:nth-child(3) {
-    width: 50%;
-    float: right;
-    padding-left: 70px;
-} */
 
 .ct-bar {
     stroke-width: 50px;

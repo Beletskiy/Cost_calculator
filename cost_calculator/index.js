@@ -3,6 +3,7 @@
     // #script_begin#
     'use strict';
     var scripts = [
+        'source/models/displayedDate.model/displayedDate.model.js',
 
         'source/models/categories.collection/categories.collection.js',
 

@@ -1,59 +1,89 @@
 .form {
-  padding: 20px;
+    padding: 20px;
 }
 
 .form__group {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .form__title {
-  margin-bottom: 10px;
-  font: 14px "Lato Regular", sans-serif;
-  text-transform: uppercase;
-  color: white;
+    margin-bottom: 10px;
+    font: 14px "Lato Regular", sans-serif;
+    text-transform: uppercase;
+    color: white;
 }
 
 .form__label {
-  font: 18px "Lato Regular", sans-serif;
-  color: white;
+    font: 18px "Lato Regular", sans-serif;
+    color: white;
 }
 
 .form__input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px 20px;
-  border: none;
-  background: rgba(9,9,9,0.3);
-  font: 14px "Lato Regular", sans-serif;
-  color: white;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    font: 14px "Lato Regular", sans-serif;
+    color: white;
 }
 
 .form__input::-webkit-input-placeholder {
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .form__input::-moz-placeholder {
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .form__msg {
-  margin-top: 5px;
-  font: 14px "Lato Regular", sans-serif;
-  color: darkred;
+    margin-top: 5px;
+    font: 14px "Lato Regular", sans-serif;
+    color: darkred;
 }
-
-
 
 /*--== MODIFIERS ==--*/
 
 /*Settings*/
 
 .form__group--notifications {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 5px 10px 20px;
-  margin-bottom: 4px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 10px 5px 10px 20px;
+    margin-bottom: 4px;
+}
+
+/*Limit by category*/
+
+.form__group--select {
+    position: relative;
+}
+
+.form__group--select::before {
+    content: "";
+    position: absolute;
+    border-style: solid solid none solid;
+    border-width: 6px;
+    border-color: white transparent transparent transparent;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.form__group--select .form__input {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 40px;
+}
+
+option {
+    background: #2f9a82;
 }

@@ -19,21 +19,16 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
         year: null,
         expenses: null,
         revenues: null,
-        expensesDiff: null,
-        revenuesDiff: null
+        expensesPrevMonth: null,
+        revenuesPrevMonth: null
     },
 
     onInitialize: function () {
         'use strict';
-        var now = moment();
-        this.application.displayedDate = now;
-        this.headerInfo.month = now.format('MMMM');
-        this.headerInfo.year = now.format('YYYY');
-    },
-
-    onStartAttach: function () {
-        'use strict';
-        this.init();
+        //var now = RAD.model('displayedDate.model').attributes.displayedDate;
+        //
+        //this.headerInfo.month = now.format('MMMM');
+        //this.headerInfo.year = now.format('YYYY');
     },
 
     onEndRender: function () {
@@ -41,16 +36,21 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
         this.$menu = this.$('.menu');
     },
 
-    init: function () {
+    onStartAttach: function () {
         'use strict';
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.loadData();
+    },
+
+    loadData: function () {
+        'use strict';
+        var displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
+
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
-        this.headerInfo.expensesDiff = this.headerInfo.expenses -
-            RAD.model('collection.purchases').getCommonExpensesFromPreviousMonth(1);
-        this.headerInfo.revenuesDiff = this.headerInfo.revenues -
-            RAD.model('collection.purchases').getCommonRevenuesFromPreviousMonth(1);
+        this.headerInfo.expensesPrevMonth = RAD.model('collection.purchases').getCommonExpensesFromPreviousMonth(1);
+        this.headerInfo.revenuesPrevMonth = RAD.model('collection.purchases').getCommonRevenuesFromPreviousMonth(1);
         this.render();
     },
 
@@ -64,10 +64,10 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
         'use strict';
         switch (id) {
             case 'add-expenses':
-                this.application.showAddExpenses();
+                this.application.showAddExpenses(this.viewID);
                 break;
             case 'add-revenues':
-                this.application.showAddRevenues();
+                this.application.showAddRevenues(this.viewID);
                 break;
             case 'total-expenses':
                 this.application.showExpenses();
@@ -89,12 +89,12 @@ RAD.view('home.screen', RAD.Blanks.View.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.loadData.bind(this));
     },
 
     showSettings: function (e) {

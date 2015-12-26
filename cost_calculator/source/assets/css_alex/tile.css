@@ -11,8 +11,11 @@
 
 .tile__content {
   box-sizing: border-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: column;
   flex-direction: column;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   padding: 15px 15px 15px 30px;
 }
@@ -64,9 +67,13 @@
 }
 
 .tile__limit {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-grow: 1;
   flex-grow: 1;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
   align-items: center;
   margin: 5px 0;
 }
@@ -82,6 +89,15 @@
 /*--== MODIFIERS ==--*/
 
 /*Home.*/
+
+.tiles--home {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  overflow-y: auto;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+   -webkit-overflow-scrolling: touch;
+}
 
 .tile--home .tile__content {
   height: 128px;
@@ -185,6 +201,7 @@
 /*Plan your expenses*/
 
 .tile--plan .tile__content {
+  -webkit-justify-content: flex-start;
   justify-content: flex-start;
   height: 100px;
   padding: 15px 40px 15px 15px;

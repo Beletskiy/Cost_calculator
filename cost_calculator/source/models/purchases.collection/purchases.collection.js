@@ -5,7 +5,10 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
         this.add(purchases);
         this.on('add remove', this.setToLocalStorage);
         this.sortKey = 'date';
+        this.displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
     },
+
+    //displayedDate: RAD.model('displayedDate.model').attributes.displayedDate,
 
     comparator: function (collection) {
         'use strict';
@@ -39,12 +42,13 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
 
     getResultsFromCurrentMonth: function () {
         'use strict';
-        var displayedDate = null, result = null;
+        var self = this,
+            result = null;
 
-        displayedDate = RAD.application.displayedDate;
+       // displayedDate = RAD.application.displayedDate;
         result = this.filter(function (data) {
             var dateFromCollection = moment(data.get('date'));
-            return dateFromCollection.isSame(displayedDate, 'month');
+            return dateFromCollection.isSame(self.displayedDate, 'month');
         });
         return result;
     },
@@ -54,7 +58,7 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
         var neededDate = {}, result = {},
             currentDate = {};
 
-        currentDate = moment(JSON.parse(JSON.stringify(RAD.application.displayedDate)));
+        currentDate = moment(JSON.parse(JSON.stringify(this.displayedDate)));
         neededDate = currentDate.subtract(diffInMonth, 'months');
         result = this.filter(function (data) {
             var dateFromCollection = moment(data.get('date'));

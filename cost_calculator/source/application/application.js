@@ -36,18 +36,20 @@ RAD.application(function (core) {
         });
     };
 
-    app.showAddExpenses = function () {
+    app.showAddExpenses = function (viewCameFrom) {
         var options = {
             container_id: '#screen',
-            content: 'add_expenses.screen'
+            content: 'add_expenses.screen',
+            extras: viewCameFrom
         };
         core.publish('navigation.show', options);
     };
 
-    app.showAddRevenues = function () {
+    app.showAddRevenues = function (viewCameFrom) {
         var options = {
             container_id: '#screen',
-            content: 'add_revenues.screen'
+            content: 'add_revenues.screen',
+            extras: viewCameFrom
         };
         core.publish('navigation.show', options);
     };
@@ -108,6 +110,7 @@ RAD.application(function (core) {
             container_id: '#screen',
             content: 'chart_expenses.screen'
         };
+        // получить данные для модели графика
         core.publish('navigation.show', options);
     };
 
@@ -139,6 +142,15 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'settings.screen'
+        };
+        core.publish('navigation.show', options);
+    };
+
+    app.backToPreviousPage = function (previousPage) {
+        var options = {
+            container_id: '#screen',
+            content: previousPage,
+            animation: 'slide-out'
         };
         core.publish('navigation.show', options);
     };

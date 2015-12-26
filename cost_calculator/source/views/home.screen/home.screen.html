@@ -1,5 +1,5 @@
 <div>
-    <div class="page">
+    <div class="page page--home">
         <div class="datepicker datepicker--without-money">
             <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta">
                 <span class="icon icon--arrow-left" id="month-minus"></span>
@@ -17,20 +17,20 @@
             </button>
         </div>
 
-        <div class="tiles">
+        <div class="tiles tiles--home">
             <div class="tile tile--home tile--balance" id="total-balance">
                 <div class="tile__content">
                     <h2 class="tile__name">
                         <span class="icon icon--total-balance"></span>
                         total balance
                     </h2>
-                    <p class="tile__value">
+                    <p class="tiles tile__value">
                         {{ this.headerInfo.revenues - this.headerInfo.expenses }}
                     </p>
                     <p class="tile__diff">
                         previous month
                         <span class="tile__diff-number">
-                           {{ this.headerInfo.revenuesDiff - this.headerInfo.expensesDiff }}
+                           {{ this.headerInfo.revenuesPrevMonth - this.headerInfo.expensesPrevMonth }}
                         </span>
                     </p>
                 </div>
@@ -48,7 +48,7 @@
                     <p class="tile__diff">
                         previous month
                         <span class="tile__diff-number">
-                           {{ this.headerInfo.revenuesDiff }}
+                           {{ this.headerInfo.revenuesPrevMonth }}
                         </span>
                     </p>
                 </div>
@@ -66,14 +66,14 @@
                     <p class="tile__diff">
                         previous month
                         <span class="tile__diff-number">
-                            {{ this.headerInfo.expensesDiff }}
+                            {{ this.headerInfo.expensesPrevMonth }}
                         </span>
                     </p>
                 </div>
-                <a class="s-fa" ></a>
-                <button class="tile__control btn" type="button">
-                    <span class="icon icon--more" id="settings"></span>
-                </button>
+                <!--<a class="s-fa" ></a>-->
+                <!--<button class="tile__control btn" type="button">-->
+                    <!--<span class="icon icon&#45;&#45;more" id="settings"></span>-->
+                <!--</button>-->
             </div>
         </div>
 

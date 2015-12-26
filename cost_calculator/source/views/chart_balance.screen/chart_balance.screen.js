@@ -36,12 +36,12 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.init.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.init.bind(this));
     },
 
     toBalancePage: function () {
@@ -51,6 +51,7 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
 
     init: function () {
         'use strict';
+
         this.currentRevenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
         this.currentExpenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.balance = this.currentRevenues - this.currentExpenses;

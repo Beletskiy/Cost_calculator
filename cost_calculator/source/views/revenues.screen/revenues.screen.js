@@ -1,4 +1,4 @@
-RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
+RAD.view('revenues.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/revenues.screen/revenues.screen.html',
 
@@ -15,14 +15,13 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
         'tap #to-home-page': 'toHomePage',
         'tap #to-add-revenues-page': 'toAddRevenuesPage',
         'tap .settings': 'showConcreteSettings',
-        'tap #cancel': 'hideSettings',
+        'tap #cancel, .menu__overlay': 'hideSettings',
         'tap #item-for-remove': 'removeItem'
     },
 
     onInitialize: function () {
         'use strict';
         this.model = new Backbone.Collection();
-        this.listenTo(this.model, 'reset sort', this.render);
         this.baseCollection = RAD.model('collection.purchases');
         this.baseCollection.sortByDate();
         this.listenTo(this.model, 'reset sort', this.render);
@@ -35,18 +34,18 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     onStartAttach: function () {
         'use strict';
-        this.init();
+        this.loadData();
     },
 
-    init: function () {
+    loadData: function () {
         'use strict';
-        var collect = RAD.model('collection.purchases').getResultsFromCurrentMonth();
+        var collect = RAD.model('collection.purchases').getResultsFromCurrentMonth(),
+            displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
 
         this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         this.model.reset(collect);
-        //this.changeModel(this.model);
     },
 
     showChartRevenues: function () {
@@ -57,12 +56,12 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.loadData.bind(this));
     },
 
     toHomePage: function () {
@@ -72,7 +71,7 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     toAddRevenuesPage: function () {
         'use strict';
-        this.application.showAddRevenues();
+        this.application.showAddRevenues(this.viewID);
     },
 
     showConcreteSettings: function (e) {
@@ -89,6 +88,6 @@ RAD.view('revenues.screen', RAD.Blanks.ScrollableView.extend({
     removeItem: function () {
         'use strict';
         this.baseCollection.remove(this.baseCollection.where({id: this.itemForRemove}));
-        this.init();
+        this.loadData();
     }
 }));

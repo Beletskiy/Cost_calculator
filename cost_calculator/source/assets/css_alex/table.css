@@ -1,83 +1,205 @@
+/*.table-hold {*/
+/*padding: 20px 10px;*/
+/*}*/
+
+/*.table {*/
+/*width: 100%;*/
+/*}*/
+
+/*.table__body {*/
+/*display: block;*/
+/*max-height: 280px;*/
+/*overflow-y: auto;*/
+/*/!*max-height: 100%;*!/*/
+/*/!*overflow-y: scroll;*!/*/
+/*}*/
+
+/*.table__row {*/
+/*border-bottom: 1px solid rgba(255, 255, 255, 0.3);*/
+/*display: table;*/
+/*width: 100%;*/
+/*}*/
+
+/*.table__row--head,*/
+/*.table__row--notification {*/
+/*border: none;*/
+/*}*/
+
+/*.table__body .table__row {*/
+/*display: table;*/
+/*width: 100%;*/
+/*}*/
+
+/*.table__title,*/
+/*.table__data {*/
+/*padding: 10px 0;*/
+/*text-align: left;*/
+/*vertical-align: middle;*/
+/*}*/
+
+/*.table__title {*/
+/*font: 14px "Lato Regular", sans-serif;*/
+/*color: white;*/
+/*text-transform: uppercase;*/
+/*}*/
+
+/*.table__data {*/
+/*font: 14px "Lato Regular", sans-serif;*/
+/*color: white;*/
+/*}*/
+
+/*.table__title--3,*/
+/*.table__data--3 {*/
+/*text-align: right;*/
+/*}*/
+
+/*.table__title--1 {*/
+/*width: 65px;*/
+/*}*/
+
+/*.table__data--3 {*/
+/*font: 14px "Lato Bold", sans-serif;*/
+/*}*/
+
+/*.table__data--4 {*/
+/*text-align: right;*/
+/*}*/
+
+/*.table__control {*/
+/*position: relative;*/
+/*top: 1px;*/
+/*}*/
+
+/*.table__control .icon {*/
+/*font-size: 24px;*/
+/*color: white;*/
+/*}*/
+
+/*.table__data--notification {*/
+/*background: #1D5953;*/
+/*text-align: center;*/
+/*}*/
+
+/*.table__notification-title {*/
+/*font: 14px "Lato Regular", sans-serif;*/
+/*text-transform: uppercase;*/
+/*color: red;*/
+/*}*/
+
+/*.table__notification-text {*/
+/*font: 14px "Lato Regular", sans-serif;*/
+/*color: white;*/
+/*}*/
+
+/*.table__limit {*/
+/*font: 14px "Lato Regular", sans-serif;*/
+/*text-transform: uppercase;*/
+/*color: rgba(255, 255, 255, 0.6);*/
+/*}*/
+
+/*--== MODIFIERS ==--*/
+
+/*Table some*/
+
+.table--some .table__data--1 {
+    padding: 0;
+}
+
 .table-hold {
-  padding: 20px 10px;
+    padding: 20px 10px;
+
 }
 
 .table {
-  width: 100%;
+    width: 100%;
+}
+
+.table__body {
+    display: block;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.table__body .table__row {
+    display: table;
+    width: 100%;
 }
 
 .table__row {
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: table;
+    width: 100%;
 }
 
 .table__row--head,
 .table__row--notification {
-  border: none;
+    border: none;
 }
 
 .table__title,
 .table__data {
-  padding: 10px 0;
-  text-align: left;
-  vertical-align: middle;
+    padding: 10px 0;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .table__title {
-  font: 14px "Lato Regular", sans-serif;
-  color: white;
-  text-transform: uppercase;
+    font: 14px "Lato Regular", sans-serif;
+    color: white;
+    text-transform: uppercase;
 }
 
 .table__data {
-  font: 14px "Lato Regular",sans-serif;
-  color: white;
+    font: 14px "Lato Regular", sans-serif;
+    color: white;
 }
 
 .table__title--3,
 .table__data--3 {
-  text-align: right;
+    text-align: right;
 }
 
 .table__title--1 {
-  width: 65px;
+    width: 65px;
 }
 
 .table__data--3 {
-  font: 14px "Lato Bold",sans-serif;
+    font: 14px "Lato Bold", sans-serif;
 }
 
 .table__data--4 {
-  text-align: right;
+    text-align: right;
 }
 
 .table__control {
-  position: relative;
-  top: 1px;
+    position: relative;
+    top: 1px;
 }
 
 .table__control .icon {
-  font-size: 24px;
-  color: white;
+    font-size: 24px;
+    color: white;
 }
 
 .table__data--notification {
-  background: #1D5953;
-  text-align: center;
+    background: #1D5953;
+    text-align: center;
 }
 
 .table__notification-title {
-  font: 14px "Lato Regular",sans-serif;
-  text-transform: uppercase;
-  color: red;
+    font: 14px "Lato Regular", sans-serif;
+    text-transform: uppercase;
+    color: red;
 }
 
 .table__notification-text {
-  font: 14px "Lato Regular",sans-serif;
-  color: white;
+    font: 14px "Lato Regular", sans-serif;
+    color: white;
 }
 
 .table__limit {
-  font: 14px "Lato Regular",sans-serif;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+    font: 14px "Lato Regular", sans-serif;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
 }
+

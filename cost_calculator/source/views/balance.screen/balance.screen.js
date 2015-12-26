@@ -1,4 +1,4 @@
-RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
+RAD.view('balance.screen', RAD.Blanks.View.extend({
 
     url: 'source/views/balance.screen/balance.screen.html',
     headerInfo: {
@@ -13,7 +13,7 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
         'tap #month-plus': 'nextMonth',
         'tap #to-home-page': 'toHomePage',
         'tap .settings': 'showConcreteSettings',
-        'tap #cancel': 'hideSettings',
+        'tap #cancel, .menu__overlay': 'hideSettings',
         'tap #item-for-remove': 'removeItem'
     },
 
@@ -21,7 +21,8 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         this.model = new Backbone.Collection();
         this.baseCollection = RAD.model('collection.purchases');
-        this.listenTo(this.model, 'reset sort', this.render);
+        this.baseCollection.sortByDate();
+        //this.listenTo(this.model, 'reset sort', this.render);
         //this.baseCollection.listenTo(this.baseCollection, 'remove', this.render); don't work correctly
     },
 
@@ -32,16 +33,18 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
 
     onStartAttach: function () {
         'use strict';
-        this.init();
+        this.loadData();
     },
 
-    init: function () {
+    loadData: function () {
         'use strict';
-        var collect = this.baseCollection.getResultsFromCurrentMonth();
+        var collect = this.baseCollection.getResultsFromCurrentMonth(),
+            displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
+
         this.headerInfo.balance = this.baseCollection.getCommonRevenuesFromCurrentMonth() -
             this.baseCollection.getCommonExpensesFromCurrentMonth();
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         this.model.reset(collect);
     },
 
@@ -52,12 +55,12 @@ RAD.view('balance.screen', RAD.Blanks.ScrollableView.extend({
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.loadData.bind(this));
     },
 
     showConcreteSettings: function (e) {
