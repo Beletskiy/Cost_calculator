@@ -21,27 +21,22 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
 
     onStartAttach: function () {
         'use strict';
-        var self = this;
-        this.init();
-        $(window).resize(function () {
-            self.drawChart();
-        });
+        this.loadData();
     },
 
     onEndDetach: function () {
         'use strict';
-        $(window).off('resize');
     },
 
 
     previousMonth: function () {
         'use strict';
-        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        RAD.model('displayedDate.model').attributes.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.loadData.bind(this));
     },
 
     toBalancePage: function () {
@@ -49,14 +44,15 @@ RAD.view('chart_balance.screen', RAD.Blanks.View.extend({
         this.application.backToBalance();
     },
 
-    init: function () {
+    loadData: function () {
         'use strict';
+        var displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
 
         this.currentRevenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
         this.currentExpenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
         this.headerInfo.balance = this.currentRevenues - this.currentExpenses;
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         this.render();
         this.drawChart();
     },

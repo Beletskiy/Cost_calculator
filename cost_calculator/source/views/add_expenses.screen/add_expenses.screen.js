@@ -6,7 +6,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
     events: {
         'tap #datetimepicker4': 'onDatetimepicker',
         'tap #add-cost': 'onSubmit',
-        'tap input, select, #to-expenses-page': 'hideSuccessMessage',
+        'tap input, select, #to-previous-page': 'hideSuccessMessage',
         'tap #to-previous-page': 'toPreviousPage'
     },
 
@@ -53,6 +53,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
             costsTypeId = this.$('#costs-type option:selected').data('id');
         time = moment(time).format('YYYY-MM-DD');
         if (this.$formAddCost[0].checkValidity()) {
+            console.log(RAD.model('collection.purchases'));
             RAD.model('collection.purchases').add({
                 id: _.uniqueId(),
                 date: time,
@@ -61,6 +62,7 @@ RAD.view('add_expenses.screen', RAD.Blanks.View.extend({
                 categoryId: costsTypeId,
                 revenue: false
             });
+            console.log(RAD.model('collection.purchases'));
             this.$successMessage.show();
             this.clearForm();
         }

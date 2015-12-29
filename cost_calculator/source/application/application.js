@@ -155,18 +155,18 @@ RAD.application(function (core) {
         core.publish('navigation.show', options);
     };
 
-    app.displayedDate = {};
-
-    app.changeMonth = function (amountOfMonth, callback) {
-        var MAX_AMOUNT = 60,
-            MIN_AMOUNT = -60;
-        if ((typeof amountOfMonth === 'number') && (amountOfMonth < MAX_AMOUNT) && (amountOfMonth > MIN_AMOUNT)) {
-            this.displayedDate = this.displayedDate.add(amountOfMonth, 'months');
-        }
-        if (callback && typeof callback === 'function') {
-            callback();
-        }
-    };
+    //app.displayedDate = {};
+    //
+    //app.changeMonth = function (amountOfMonth, callback) {
+    //    var MAX_AMOUNT = 60,
+    //        MIN_AMOUNT = -60;
+    //    if ((typeof amountOfMonth === 'number') && (amountOfMonth < MAX_AMOUNT) && (amountOfMonth > MIN_AMOUNT)) {
+    //        this.displayedDate = this.displayedDate.add(amountOfMonth, 'months');
+    //    }
+    //    if (callback && typeof callback === 'function') {
+    //        callback();
+    //    }
+    //};
 
     return app;
 }, true);

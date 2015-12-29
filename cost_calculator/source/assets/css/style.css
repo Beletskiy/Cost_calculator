@@ -91,6 +91,10 @@ div[view='chart_balance.screen'] .ct-chart {
     padding-top: 10px;
 }
 
+.ct-chart {
+    min-height: 150px;
+}
+
 .chart-legend {
     padding-left: 20px;
 }

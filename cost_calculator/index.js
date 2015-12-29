@@ -3,11 +3,13 @@
     // #script_begin#
     'use strict';
     var scripts = [
-        'source/models/displayedDate.model/displayedDate.model.js',
+        'source/models/displayed_date.model/displayed_date.model.js',
 
         'source/models/categories.collection/categories.collection.js',
 
         'source/models/purchases.collection/purchases.collection.js',
+
+        'source/models/expense_chart.model/expense_chart.model.js',
 
         'source/service/service.json_loader/service.json_loader.js',
         

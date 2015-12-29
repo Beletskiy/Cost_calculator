@@ -77,7 +77,7 @@ RAD.view('balance.screen', RAD.Blanks.View.extend({
     removeItem: function () {
         'use strict';
         this.baseCollection.remove(this.baseCollection.where({id: this.itemForRemove}));
-        this.init();
+        this.loadData();
     },
 
     toHomePage: function () {

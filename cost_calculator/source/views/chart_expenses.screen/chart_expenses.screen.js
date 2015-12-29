@@ -17,6 +17,7 @@ RAD.view('chart_expenses.screen', RAD.Blanks.ScrollableView.extend({
     onInitialize: function () {
         'use strict';
         this.application.loadCategories();
+       // this.listenTo(this.model, 'reset', this.render);
     },
 
     onEndRender: function () {
@@ -42,22 +43,24 @@ RAD.view('chart_expenses.screen', RAD.Blanks.ScrollableView.extend({
 
     loadData: function () {
         'use strict';
+        var displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
+
         this.headerInfo.expenses = RAD.model('collection.purchases').getCommonExpensesFromCurrentMonth();
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
-        console.log('this.model ',this.model);
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         //this.changeModel(this.model);
+        this.drawChart();
         this.render();
     },
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.loadData.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.loadData.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.loadData.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.loadData.bind(this));
     },
 
     toExpensesPage: function () {
@@ -93,28 +96,9 @@ RAD.view('chart_expenses.screen', RAD.Blanks.ScrollableView.extend({
                 k++;
             }
         }
-
+        //console.log(data);
+        //console.log(document.getElementsByClassName('ct-chart'));
         new Chartist.Pie('.ct-chart', data, options);
-
-     // var chart =  new Chartist.Pie('.ct-chart', data, options);
-        //console.log(chart);
-
-       // calculateDataForChartAndLegend(this, function(){
-       //     new Chartist.Pie('.ct-chart', data, options);
-       //     console.log('data', data);
-       // });
-
-
-        //function calculateDataForChartAndLegend (self, callback) {
-        //    for (var i = 0, k = 0; i < arrOfExpenses.length; i++) {
-        //        if (arrOfExpenses[i].value !== 0) {
-        //            data.series.push(arrOfExpenses[i].value);
-        //            self.model.add({id: k, category: RAD.model('collection.categories').getCategoryById(arrOfExpenses[i].id)});
-        //            k++;
-        //        }
-        //    }
-        //    callback();
-        //}
     }
 
 }));

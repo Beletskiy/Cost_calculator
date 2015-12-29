@@ -27,21 +27,23 @@ RAD.view('chart_revenues.screen', RAD.Blanks.ScrollableView.extend({
 
     init: function () {
         'use strict';
+        var displayedDate = RAD.model('displayedDate.model').attributes.displayedDate;
+
         this.headerInfo.revenues = RAD.model('collection.purchases').getCommonRevenuesFromCurrentMonth();
-        this.headerInfo.month = this.application.displayedDate.format('MMMM');
-        this.headerInfo.year = this.application.displayedDate.format('YYYY');
+        this.headerInfo.month = displayedDate.format('MMMM');
+        this.headerInfo.year = displayedDate.format('YYYY');
         this.render();
         this.drawChart();
     },
 
     previousMonth: function () {
         'use strict';
-        this.application.changeMonth(-1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(-1, this.init.bind(this));
     },
 
     nextMonth: function () {
         'use strict';
-        this.application.changeMonth(1, this.init.bind(this));
+        RAD.model('displayedDate.model').attributes.changeMonth(1, this.init.bind(this));
     },
 
     toRevenuesPage: function () {

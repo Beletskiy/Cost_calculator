@@ -38,6 +38,7 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
     setToLocalStorage: function () {
         'use strict';
         localStorage.setItem('purchases', JSON.stringify(this));
+       // console.log(JSON.parse(localStorage.getItem('purchases')));
     },
 
     getResultsFromCurrentMonth: function () {
