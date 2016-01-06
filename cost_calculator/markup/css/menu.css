@@ -6,11 +6,13 @@
   right: 0;
   overflow: hidden;
   visibility: hidden;
+  -webkit-transition: visibility 0.3s;
   transition: visibility 0.3s;
 }
 
 .menu--open {
   visibility: visible;
+  -webkit-transition: visibility 0s;
   transition: visibility 0s;
 }
 
@@ -24,7 +26,7 @@
   background: #1D5953;
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
-  transition: -webkit-transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
 }
 

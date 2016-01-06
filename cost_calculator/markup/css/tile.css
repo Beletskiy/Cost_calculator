@@ -9,14 +9,19 @@
 }
 
 .tile__content {
+
+/*  for Android 4.3*/
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+/*=================*/
+
   box-sizing: border-box;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  padding: 15px 15px 15px 30px;
 }
 
 .tile__name .icon {
@@ -66,6 +71,18 @@
 }
 
 .tile__limit {
+
+/*  for Android 4.3*/
+  display: -webkit-box;
+  display: box;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -webkit-box-align: center;
+  box-align: center;
+  -webkit-box-pack: justify;
+  box-pack: justify;
+/*=================*/
+
   display: -webkit-flex;
   display: flex;
   -webkit-flex-grow: 1;
@@ -90,6 +107,12 @@
 /*Home.*/
 
 .tiles--home {
+
+/*  for Android 4.3*/
+  -webkit-box-flex: 1;
+  box-flex: 1;
+/*=================*/
+
   -webkit-flex-grow: 1;
   flex-grow: 1;
   overflow-y: auto;
@@ -99,7 +122,16 @@
 }
 
 .tile--home .tile__content {
+
+/*  for Android 4.3*/
+  -webkit-box-pack: justify;
+  box-pack: justify;
+/*=================*/
+
   height: 128px;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 15px 15px 15px 30px;
 }
 
 .tile--home .tile__name {
@@ -200,8 +232,6 @@
 /*Plan your expenses*/
 
 .tile--plan .tile__content {
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
   height: 100px;
   padding: 15px 40px 15px 15px;
 }

@@ -29,6 +29,10 @@
   color: white;
 }
 
+.form__input::-webkit-outer-spin-button {
+  margin: 0;
+}
+
 .form__input::-webkit-input-placeholder {
   text-transform: uppercase;
   color: rgba(255,255,255,0.5);
@@ -52,6 +56,16 @@
 /*Settings*/
 
 .form__group--notifications {
+
+/*  for Android 4.3*/
+  display: -webkit-box;
+  display: box;
+  -webkit-box-pack: justify;
+  box-pack: justify;
+  -webkit-box-align: center;
+  box-align: center;
+/*  ===============*/
+
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-between;
