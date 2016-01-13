@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cost Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="css/cost-calculator.css" rel="stylesheet">
+</head>
+<body> <!--Provide adding class "h-oh" when is open-->
+    <div class="page page--chart">
+        <nav class="nav nav--chart-expenses">
+            <a class="nav__control nav__control--back btn s-cvta" href="expenses-by-date.html">
+                <span class="icon icon--back"></span>
+            </a>
+            <a class="nav__title nav__title--link" href="expenses-chart-by-category.html">
+                expenses chart by date
+                <span class="icon icon--caret s-cvta"></span>
+            </a>
+            <button class="nav__control nav__control--more btn s-cvta" type="button">
+                <span class="icon icon--more"></span>
+            </button>
+        </nav>
+
+        <div class="datepicker">
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-left s-cvta">
+                <span class="icon icon--arrow-left"></span>
+            </button>
+            <div>
+                <div class="datepicker__date">
+                    December, 2015
+                </div>
+                <div class="datepicker__money">
+                    1,234,000.00
+                </div>
+            </div>
+            <button class="btn btn--datepicker-arrow btn--datepicker-arrow-right s-cvta">
+                <span class="icon icon--arrow-right"></span>
+            </button>
+        </div>
+
+        <div class="infographic">
+            <div class="chart">
+                <div class="chart__cols"></div>
+            </div>
+        </div>
+
+        <div class="menu"> <!--Add class "menu--open" to open menu-->
+            <div class="menu__overlay s-fa"></div>
+            <ul class="menu__list s-fa">
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--orange" href="plan-your-expenses.html">
+                        <span class="mark-text__mark"></span>
+                        <span class="mark-text__text">
+                            plan your expenses
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--blue" href="settings.html">
+                        <span class="mark-text__mark"></span>
+                        <span class="mark-text__text">
+                            settings
+                        </span>
+                    </a>
+                </li>
+                <li class="menu__point">
+                    <a class="mark-text mark-text--menu mark-text--grey" href="#">
+                        <span class="mark-text__mark"></span>
+                        <span class="mark-text__text">
+                            cancel
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

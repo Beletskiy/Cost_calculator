@@ -1,0 +1,67 @@
+.infographic {
+
+/*  for Android 4.3*/
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+/*  ===============*/
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.chart {
+
+/*  for Android 4.3*/
+  display: -webkit-box;
+  display: box;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+/*  ===============*/
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+.chart__pie {
+  width: 250px;
+  height: 250px;
+  margin: auto;
+  background: url(../img/PieChart.png) center no-repeat;
+  background-size: auto 100%;
+}
+
+.chart__cols {
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  background: url(../img/column-chart.png) 0 center no-repeat;
+  background-size: auto 100%;
+}
+
+.legend {
+
+/*  for Android 4.3*/
+  display: -webkit-box;
+  display: box;
+/*  ===============*/
+
+  display: flex;
+  height: 120px;
+  overflow-y: auto;
+}
+
+.legend__column {
+  box-sizing: border-box;
+  width: 50%;
+  padding-left: 30px;
+}

@@ -12,6 +12,29 @@
   vertical-align: middle;
 }
 
+.mark-text--orange .mark-text__mark {
+  background: orange;
+}
+
+.mark-text--blue .mark-text__mark {
+  background: blue;
+}
+
+.mark-text--red .mark-text__mark {
+  background: red;
+}
+
+.mark-text--green .mark-text__mark {
+  background: green;
+}
+
+.mark-text--grey .mark-text__mark {
+  background: grey;
+}
+
+.mark-text--yellow .mark-text__mark {
+  background: yellow;
+}
 
 
 /*--== MODIFIERS ==--*/
@@ -28,45 +51,21 @@
   text-transform: uppercase;
 }
 
-.mark-text--plan .mark-text__mark {
-  background: orange;
-}
-
-.mark-text--settings .mark-text__mark {
-  background: blue;
-}
-
-.mark-text--remove .mark-text__mark {
-  background: red;
-}
-
-.mark-text--edit .mark-text__mark {
-  background: green;
-}
-
-.mark-text--cancel .mark-text__mark {
-  background: grey;
-}
-
-
-/*Expenses by category*/
-
-.mark-text--transport .mark-text__mark {
-  background: yellow;
-}
-
-.mark-text--shopping .mark-text__mark {
-  background: orange;
-}
-
-.mark-text--petrol .mark-text__mark {
-  background: red;
-}
-
 
 /*Table some*/
 
 .mark-text--notext .mark-text__mark {
   height: 34px;
   width: 34px;
+}
+
+
+/*Legend*/
+
+.mark-text--legend {
+  padding: 5px 0;
+}
+
+.mark-text--legend .mark-text__text {
+  text-transform: uppercase;
 }

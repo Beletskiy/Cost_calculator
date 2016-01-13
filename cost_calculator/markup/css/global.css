@@ -9,7 +9,8 @@ html, body {
   background-size: cover;
 }
 
-.page--home {
+.page--home,
+.page--chart {
 
 /*  for Android 4.3*/
   display: -webkit-box;
@@ -18,9 +19,12 @@ html, body {
   box-orient: vertical;
 /*  ===============*/
 
-  height: 100%;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+}
+
+.page--home {
+  height: 100%;
 }

@@ -27,7 +27,6 @@
   color: white;
   text-transform: uppercase;
   text-decoration: none;
-  pointer-events: none;
 }
 
 .nav__title .icon {
@@ -37,7 +36,6 @@
 .nav__title--link {
   position: relative;
   padding-right: 15px;
-  pointer-events: auto;
 }
 
 
@@ -46,21 +44,23 @@
 
 /*Expenses by date, by category*/
 
-.nav--expenses-by-date,
-.nav--expenses-by-category{
+.nav--more-controls {
   padding: 10px 70px;
 }
 
-.nav--expenses-by-date .nav__control--chart,
-.nav--expenses-by-category .nav__control--chart {
+.nav--more-controls .nav__control--chart {
   right: 40px;
 }
 
 
-/*Expenses by category*/
+/*Expenses by category. Expenses charts*/
 
-@media (max-width: 360px) {
-  .nav--expenses-by-category .nav__title {
+@media (max-width: 420px) {
+  .nav--more-controls .nav__title {
     width: 105px;
+  }
+
+  .nav--chart-expenses .nav__title {
+    width: 135px;
   }
 }
